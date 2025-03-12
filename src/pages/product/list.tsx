@@ -3,10 +3,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+};
+
 function ProductList() {
-  axios.defaults.baseURL = "http://localhost:3000";
   const nav = useNavigate();
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   async function getProductList() {
     const { data } = await axios.get("/products");
@@ -18,7 +23,7 @@ function ProductList() {
     { title: "Price", dataIndex: "price", key: "price" },
     {
       title: "Actions",
-      render: (_, record) => {
+      render: (record: Product) => {
         return (
           <>
             <Button
@@ -39,7 +44,7 @@ function ProductList() {
     getProductList();
   }, []);
 
-  async function handleDelete(id) {
+  async function handleDelete(id: number) {
     if (confirm("Di choi ko")) {
       try {
         await axios.delete(`/products/${id}`);

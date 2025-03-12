@@ -7,8 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { UserOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
 import ProductEdit from "./pages/product/edit";
 import ProductAdd from "./pages/product/add";
+import axios from "axios";
 
 function App() {
+  axios.defaults.baseURL = "http://localhost:3000";
+
   const nav = useNavigate();
   const routes = [
     {

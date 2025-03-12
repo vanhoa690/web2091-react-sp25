@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import ProductList from "./pages/product/list";
 import { Layout, Menu } from "antd";
+import "antd/dist/reset.css";
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +9,22 @@ import { UserOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
 import ProductEdit from "./pages/product/edit";
 import ProductAdd from "./pages/product/add";
 import axios from "axios";
+import Register from "./pages/auth/register";
+import Login from "./pages/auth/login";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3000";
 
   const nav = useNavigate();
   const routes = [
+    {
+      path: "auth/register",
+      element: <Register />,
+    },
+    {
+      path: "auth/login",
+      element: <Login />,
+    },
     {
       path: "product/list",
       element: <ProductList />,
@@ -32,6 +43,8 @@ function App() {
     { key: "/admin", icon: <HomeOutlined />, label: "Dashboard" },
     { key: "/product/list", icon: <ShopOutlined />, label: "Products" },
     { key: "/admin/users", icon: <UserOutlined />, label: "Users" },
+    { key: "/auth/register", icon: <UserOutlined />, label: "Register" },
+    { key: "/auth/login", icon: <UserOutlined />, label: "Login" },
   ];
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -50,7 +63,7 @@ function App() {
         <Menu
           theme="dark"
           mode="inline"
-          selectedKeys={["product/list"]}
+          defaultSelectedKeys={["/product/list"]}
           onClick={({ key }) => nav(key)}
           items={menuItems}
         />

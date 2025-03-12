@@ -3,12 +3,13 @@ import axios, { AxiosError } from "axios";
 
 function ProductAdd() {
   const [form] = Form.useForm();
+
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
       await axios.post("/products", values);
-      alert("ok");
       message.success("Bubble tea product added");
+      form.resetFields();
     } catch (error) {
       message.error(
         "Error saving bubble tea product" + (error as AxiosError).message

@@ -1,35 +1,81 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRoutes } from "react-router-dom";
+import ProductList from "./pages/product/list";
+import { Layout, Menu } from "antd";
+import { Content, Header } from "antd/es/layout/layout";
+import Sider from "antd/es/layout/Sider";
+import { useNavigate } from "react-router-dom";
+import { UserOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
+import ProductEdit from "./pages/product/edit";
+import ProductAdd from "./pages/product/add";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const nav = useNavigate();
+  const routes = [
+    {
+      path: "product/list",
+      element: <ProductList />,
+    },
+    {
+      path: "product/add",
+      element: <ProductAdd />,
+    },
+    {
+      path: "product/:id/edit",
+      element: <ProductEdit />,
+    },
+  ];
+  const element = useRoutes(routes);
+  const menuItems = [
+    { key: "/admin", icon: <HomeOutlined />, label: "Dashboard" },
+    { key: "/product/list", icon: <ShopOutlined />, label: "Products" },
+    { key: "/admin/users", icon: <UserOutlined />, label: "Users" },
+  ];
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider width={250} style={{ background: "#001529" }}>
+        <div
+          style={{
+            height: "64px",
+            color: "white",
+            textAlign: "center",
+            lineHeight: "64px",
+            fontSize: "18px",
+          }}
+        >
+          Admin Panel
+        </div>
+        <Menu
+          theme="dark"
+          mode="inline"
+          selectedKeys={["product/list"]}
+          onClick={({ key }) => nav(key)}
+          items={menuItems}
+        />
+      </Sider>
+      <Layout>
+        <Header
+          style={{
+            background: "#fff",
+            padding: "0 20px",
+            fontSize: "20px",
+            borderBottom: "1px solid #ddd",
+          }}
+        >
+          Admin Dashboard
+        </Header>
+        <Content
+          style={{
+            margin: "20px",
+            padding: "20px",
+            background: "#fff",
+            borderRadius: "8px",
+          }}
+        >
+          {element}
+        </Content>
+      </Layout>
+    </Layout>
+  );
 }
 
-export default App
+export default App;

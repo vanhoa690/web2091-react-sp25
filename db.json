@@ -1,4 +1,43 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": 1,
+      "name": "Classic Milk Tea",
+      "price": 3.5,
+      "category": 1,
+      "image": "classic_milk_tea.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Taro Milk Tea",
+      "price": 4.0,
+      "category": 1,
+      "image": "taro_milk_tea.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Matcha Latte",
+      "price": 4.5,
+      "category": 2,
+      "image": "matcha_latte.jpg"
+    }
+  ],
+  "categories": [
+    { "id": 1, "name": "Milk Tea" },
+    { "id": 2, "name": "Latte" },
+    { "id": 3, "name": "Fruit Tea" }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customer": "John Doe",
+      "items": [
+        { "productId": 1, "quantity": 2 },
+        { "productId": 3, "quantity": 1 }
+      ],
+      "total": 11.5,
+      "status": "Pending"
+    }
+  ],
   "users": []
 }

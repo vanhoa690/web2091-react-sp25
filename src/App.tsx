@@ -1,35 +1,24 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { useRoutes } from "react-router";
+import ProductList from "./pages/product/list";
+import ProductAdd from "./pages/product/add";
+import ProductEdit from "./pages/product/edit";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  );
+  let element = useRoutes([
+    {
+      path: "/product/list",
+      element: <ProductList />,
+    },
+    {
+      path: "/product/add",
+      element: <ProductAdd />,
+    },
+    {
+      path: "/product/:id/edit",
+      element: <ProductEdit />,
+    },
+  ]);
+  return <div>{element}</div>;
 }
 
 export default App;

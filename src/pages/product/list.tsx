@@ -37,7 +37,7 @@ function Product() {
             <th>Tên trường </th>
             <th>adrress </th>
             <th>ảnh</th>
-            <th>số lượngdsfsdfsdfdfsdfds</th>
+            <th>số lượngdsfsdfsdfdfsdfsdfsdfdfds</th>
             <th>Danh mục</th>
             <th>Action</th>
           </tr>

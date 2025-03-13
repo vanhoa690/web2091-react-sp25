@@ -1,4 +1,67 @@
 {
-  "products": [],
-  "users": []
+  "products": [
+    {
+      "id": 2,
+      "name": "Taro Milk Tea",
+      "price": 4,
+      "category": 1,
+      "image": "taro_milk_tea.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Matcha Latte",
+      "price": 4.5,
+      "category": 2,
+      "image": "matcha_latte.jpg"
+    },
+    {
+      "name": "222",
+      "price": "222",
+      "id": 5
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Milk Tea"
+    },
+    {
+      "id": 2,
+      "name": "Latte"
+    },
+    {
+      "id": 3,
+      "name": "Fruit Tea"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customer": "John Doe",
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 11.5,
+      "status": "Pending"
+    }
+  ],
+  "users": [
+    {
+      "email": "demo@gmail.com",
+      "password": "$2a$10$q1K4feU6GpgfIlsa8jBKROOpat8WkK0QRZ2sbYhvfxVNyT/l9.Q.y",
+      "id": 1
+    },
+    {
+      "email": "demo1@refine.dev",
+      "password": "$2a$10$/YBY49vRZIfZQxXgS4TKLeJkcXf9e8tpZ218rdlko646qa42bOw.W",
+      "id": 2
+    }
+  ]
 }

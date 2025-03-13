@@ -42,6 +42,9 @@ function ProductEdit() {
       >
         <Input type="number" />
       </Form.Item>
+      <Form.Item name="image" label="Image" rules={[{ required: true }]}>
+        <Input />
+      </Form.Item>
       <Button type="primary" htmlType="submit">
         Submit
       </Button>

@@ -3,10 +3,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-type Product = {
+export type Product = {
   id: number;
   name: string;
   price: number;
+  image: string;
 };
 
 function ProductList() {
@@ -18,6 +19,9 @@ function ProductList() {
     console.log(data);
     setProducts(data);
   }
+  useEffect(() => {
+    getProductList();
+  }, []);
   const columns = [
     { title: "Name", dataIndex: "name", key: "name" },
     { title: "Price", dataIndex: "price", key: "price" },
@@ -40,9 +44,6 @@ function ProductList() {
       },
     },
   ];
-  useEffect(() => {
-    getProductList();
-  }, []);
 
   async function handleDelete(id: number) {
     if (confirm("Di choi ko")) {

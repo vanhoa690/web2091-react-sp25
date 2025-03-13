@@ -5,26 +5,21 @@
       "name": "Classic Milk Tea",
       "price": 3.5,
       "category": 1,
-      "image": "classic_milk_tea.jpg"
+      "image": "https://img.freepik.com/free-psd/close-up-ice-coffee-isolated_23-2151833577.jpg?"
     },
     {
       "id": 2,
       "name": "Taro Milk Tea",
       "price": 4,
       "category": 1,
-      "image": "taro_milk_tea.jpg"
+      "image": "https://img.freepik.com/free-psd/close-up-ice-coffee-isolated_23-2151833577.jpg?"
     },
     {
       "id": 3,
       "name": "Matcha Latte",
       "price": 4.5,
       "category": 2,
-      "image": "matcha_latte.jpg"
-    },
-    {
-      "name": "1",
-      "price": "2",
-      "id": 4
+      "image": "https://img.freepik.com/free-psd/close-up-ice-coffee-isolated_23-2151833577.jpg?"
     }
   ],
   "categories": [

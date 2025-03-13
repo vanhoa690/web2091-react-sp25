@@ -23,7 +23,7 @@ const routes = [
   //   path:'/product/edit/:id',
   //   element: <EditProduct/>
   // },
-  // {
+  // { 
   //   path:'/register',
   //   element: <Register/>
   // },

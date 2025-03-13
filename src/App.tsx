@@ -1,7 +1,8 @@
 import { useRoutes } from 'react-router-dom'
 import './App.css'
-import Home from './pages/Home';
-import AddProduct from './pages/AddProduct';
+import List from './pages/product/list';
+// import Home from './pages/products/list';
+// import AddProduct from './pages/AddProduct';
 
 // import AddProduct from './pages/AddProduct'
 // import EditProduct from './pages/EditProduct'
@@ -11,12 +12,12 @@ import AddProduct from './pages/AddProduct';
 const routes = [
   {
     path:'/',
-    element: <Home/>
+    element: <List/>
   },
-  {
-    path:'/product/add',
-    element: <AddProduct/>
-  },
+  // {
+  //   path:'/product/add',
+  //   element: <AddProduct/>
+  // },
   // {
   //   path:'/product/edit/:id',
   //   element: <EditProduct/>

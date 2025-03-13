@@ -1,10 +1,11 @@
 import { useRoutes } from "react-router";
+import "./App.css";
 import ProductList from "./pages/product/list";
 import ProductAdd from "./pages/product/add";
 import ProductEdit from "./pages/product/edit";
 
 function App() {
-  let element = useRoutes([
+  const element = useRoutes([
     {
       path: "/product/list",
       element: <ProductList />,

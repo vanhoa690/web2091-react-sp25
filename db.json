@@ -1,4 +1,11 @@
 {
-  "products": [],
+  "products": [
+    {
+      "name": "KIA Morning AT",
+      "price": "35000",
+      "image": "https://picsum.photos/200/200",
+      "id": 1
+    }
+  ],
   "users": []
 }

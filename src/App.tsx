@@ -1,8 +1,8 @@
 import { useRoutes } from "react-router";
 import "./App.css";
-import ProductList from "./pages/list";
-import ProductAdd from "./pages/add";
-import ProductEdit from "./pages/edit";
+import ProductList from "./pages/product/list";
+import ProductAdd from "./pages/product/add";
+import ProductEdit from "./pages/product/edit";
 
 function App() {
   const element = useRoutes([

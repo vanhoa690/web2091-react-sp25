@@ -1,6 +1,7 @@
 import { useRoutes } from 'react-router-dom'
 import './App.css'
 import List from './pages/product/list';
+import AddProduct from './pages/product/add';
 // import Home from './pages/products/list';
 // import AddProduct from './pages/AddProduct';
 
@@ -14,10 +15,10 @@ const routes = [
     path:'/',
     element: <List/>
   },
-  // {
-  //   path:'/product/add',
-  //   element: <AddProduct/>
-  // },
+  {
+    path:'/product/add',
+    element: <AddProduct/>
+  },
   // {
   //   path:'/product/edit/:id',
   //   element: <EditProduct/>

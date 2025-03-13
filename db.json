@@ -1,24 +1,11 @@
 {
   "products": [
     {
-      "name": "iPhone Xr update",
-      "price": "77777",
-      "image": "https://picsum.photos/200/200",
-      "id": 1
-    },
-    {
-      "name": "Samsung utra 22",
+      "name": "KIA Morning AT",
       "price": "35000",
       "image": "https://picsum.photos/200/200",
-      "id": 2
-    }
-  ],
-  "users": [
-    {
-      "email": "hitue@gmail.com",
-      "password": "$2a$10$AxxcJHM63CkTFuhq7b0JDuT/E52p7nsA6lmBaiuS/TE0wW5yMZFT.",
-      "name": "Hi Tuệ433",
       "id": 1
     }
-  ]
+  ],
+  "users": []
 }

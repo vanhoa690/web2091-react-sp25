@@ -1,7 +1,7 @@
-import { Button, Table } from "antd";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Button, message, Table } from "antd";
 import { useNavigate } from "react-router-dom";
+import { getAllProduct, removeProduct } from "../../services/product";
 
 export type Product = {
   id: number;
@@ -12,16 +12,37 @@ export type Product = {
 
 function ProductList() {
   const nav = useNavigate();
-  const [products, setProducts] = useState<Product[]>([]);
+  const queryClient = useQueryClient();
 
-  async function getProductList() {
-    const { data } = await axios.get("/products");
-    console.log(data);
-    setProducts(data);
-  }
-  useEffect(() => {
-    getProductList();
-  }, []);
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProduct,
+  });
+
+  const { mutate: deleteProduct } = useMutation({
+    mutationFn: removeProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+  });
+
+  const handleDelete = (id: number) => {
+    deleteProduct(id, {
+      onSuccess: () => {
+        message.success("Xóa sản phẩm thành công!");
+      },
+      onError: () => {
+        message.error("Lỗi khi xóa sản phẩm!");
+      },
+    });
+  };
+
+  if (error) return <p>Lỗi khi tải sản phẩm</p>;
+
   const columns = [
     { title: "Name", dataIndex: "name", key: "name" },
     { title: "Price", dataIndex: "price", key: "price" },
@@ -31,7 +52,7 @@ function ProductList() {
         return (
           <>
             <Button
-              onClick={() => nav(`/product/${record.id}/edit`)}
+              onClick={() => nav(`/admin/product/${record.id}/edit`)}
               type="link"
             >
               Edit
@@ -45,26 +66,21 @@ function ProductList() {
     },
   ];
 
-  async function handleDelete(id: number) {
-    if (confirm("Di choi ko")) {
-      try {
-        await axios.delete(`/products/${id}`);
-        setProducts(products.filter((product) => product.id !== id));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
   return (
     <div>
       <Button
         type="primary"
         style={{ marginBottom: 16 }}
-        onClick={() => nav("/product/add")}
+        onClick={() => nav("/admin/product/add")}
       >
         Add Bubble Tea
       </Button>
-      <Table columns={columns} dataSource={products} rowKey="id" />
+      <Table
+        columns={columns}
+        dataSource={products}
+        loading={isLoading}
+        rowKey="id"
+      />
     </div>
   );
 }

@@ -1,11 +1,10 @@
 {
   "products": [
     {
-      "id": 1,
       "name": "Classic Milk Tea",
-      "price": 3.5,
-      "category": 1,
-      "image": "https://img.freepik.com/free-psd/close-up-ice-coffee-isolated_23-2151833577.jpg?"
+      "price": "2",
+      "image": "https://img.freepik.com/free-psd/close-up-ice-coffee-isolated_23-2151833577.jpg?",
+      "id": 1
     },
     {
       "id": 2,

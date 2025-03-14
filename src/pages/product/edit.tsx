@@ -1,37 +1,50 @@
-import { Button, Form, Input, message } from "antd";
-import axios, { AxiosError } from "axios";
+import { Button, Form, FormProps, Input, message } from "antd";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  editProductDetail,
+  getProductDetail,
+  ProductForm,
+} from "../../services/product";
+import { useMutation, useQuery } from "@tanstack/react-query";
 function ProductEdit() {
   const { id } = useParams();
 
   const [form] = Form.useForm();
+  const nav = useNavigate();
 
-  async function getProductDetail(id: string) {
-    const { data } = await axios.get(`/products/${id}`);
-    form.setFieldsValue(data);
-  }
-
+  const { data: product } = useQuery({
+    queryKey: ["product", id],
+    queryFn: () => getProductDetail(id),
+    enabled: !!id,
+  });
   useEffect(() => {
-    if (!id) return;
-    getProductDetail(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
-  const handleSubmit = async () => {
-    try {
-      const values = await form.validateFields();
-      await axios.put(`/products/${id}`, values);
-      alert("ok");
-      message.success("Bubble tea product added");
-    } catch (error) {
-      message.error(
-        "Error saving bubble tea product" + (error as AxiosError).message
-      );
+    if (product) {
+      form.setFieldsValue(product);
     }
+  }, [product, form]);
+
+  const { mutate: handleEdit } = useMutation({
+    mutationFn: editProductDetail,
+  });
+
+  const onFinish: FormProps<ProductForm>["onFinish"] = (values) => {
+    if (!id) return;
+    handleEdit(
+      { id, values },
+      {
+        onSuccess: () => {
+          message.success("Cập nhật sản phẩm thành công!");
+          nav("/admin/product/list");
+        },
+        onError: () => {
+          message.error("Lỗi khi cập nhật sản phẩm!");
+        },
+      }
+    );
   };
   return (
-    <Form form={form} onFinish={handleSubmit} layout="vertical">
+    <Form form={form} onFinish={onFinish} layout="vertical">
       <Form.Item name="name" label="Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>

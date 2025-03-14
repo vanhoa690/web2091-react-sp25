@@ -10,6 +10,8 @@ import Homepage from "./pages/Homepage";
 import AdminLayout from "./pages/layout/AdminLayout";
 import ClientLayout from "./pages/layout/ClientLayout";
 import ProductDetail from "./pages/client/product/detail";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3000";
@@ -58,7 +60,9 @@ function App() {
   ];
   const element = useRoutes(routes);
 
-  return <>{element}</>;
+  return (
+    <QueryClientProvider client={queryClient}>{element}</QueryClientProvider>
+  );
 }
 
 export default App;

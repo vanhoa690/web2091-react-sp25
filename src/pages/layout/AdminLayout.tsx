@@ -8,7 +8,7 @@ const AdminLayout = () => {
   const nav = useNavigate();
   const menuItems = [
     { key: "/admin", icon: <HomeOutlined />, label: "Dashboard" },
-    { key: "/product/list", icon: <ShopOutlined />, label: "Products" },
+    { key: "/admin/product/list", icon: <ShopOutlined />, label: "Products" },
     { key: "/admin/users", icon: <UserOutlined />, label: "Users" },
     { key: "/auth/register", icon: <UserOutlined />, label: "Register" },
     { key: "/auth/login", icon: <UserOutlined />, label: "Login" },
@@ -30,7 +30,7 @@ const AdminLayout = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["/product/list"]}
+          defaultSelectedKeys={["/admin/product/list"]}
           onClick={({ key }) => nav(key)}
           items={menuItems}
         />

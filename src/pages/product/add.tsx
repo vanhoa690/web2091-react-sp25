@@ -1,23 +1,29 @@
-import { Button, Form, Input, message } from "antd";
-import axios, { AxiosError } from "axios";
+import { Button, Form, FormProps, Input, message } from "antd";
+import { useNavigate } from "react-router-dom";
+import { addProduct, ProductForm } from "../../services/product";
+import { useMutation } from "@tanstack/react-query";
 
 function ProductAdd() {
   const [form] = Form.useForm();
+  const nav = useNavigate();
 
-  const handleSubmit = async () => {
-    try {
-      const values = await form.validateFields();
-      await axios.post("/products", values);
-      message.success("Bubble tea product added");
-      form.resetFields();
-    } catch (error) {
-      message.error(
-        "Error saving bubble tea product" + (error as AxiosError).message
-      );
-    }
+  const { mutate: handleAdd } = useMutation({
+    mutationFn: addProduct,
+  });
+
+  const onFinish: FormProps<ProductForm>["onFinish"] = (values) => {
+    handleAdd(values, {
+      onSuccess: () => {
+        message.success("Thêm sản phẩm thành công!");
+        nav("/admin/product/list");
+      },
+      onError: () => {
+        message.error("Lỗi khi thêm sản phẩm!");
+      },
+    });
   };
   return (
-    <Form form={form} onFinish={handleSubmit} layout="vertical">
+    <Form form={form} onFinish={onFinish} layout="vertical">
       <Form.Item name="name" label="Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>

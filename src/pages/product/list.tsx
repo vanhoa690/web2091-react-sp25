@@ -1,22 +1,17 @@
+import { useQuery } from "@tanstack/react-query";
 import { Image, Table } from "antd";
+import axios from "axios";
 
 function ProductList() {
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike Name",
-      price: 32,
-      image: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      description: "mo ta",
-    },
-    {
-      key: "2",
-      name: "Mike",
-      price: 32,
-      image: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      description: "mo ta",
-    },
-  ];
+  const getAllProduct = async () => {
+    const { data } = await axios.get("http://localhost:4000/products");
+    return data;
+  };
+  const { data, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProduct,
+  });
+
   const columns = [
     {
       title: "Name",
@@ -38,11 +33,11 @@ function ProductList() {
     },
     {
       title: "Description",
-      dataIndex: "description",
-      key: "description",
+      dataIndex: "desc",
+      key: "desc",
     },
   ];
-  return <Table dataSource={dataSource} columns={columns} />;
+  return <Table dataSource={data} columns={columns} loading={isLoading} />;
 }
 
 export default ProductList;

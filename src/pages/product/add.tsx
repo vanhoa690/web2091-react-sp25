@@ -1,6 +1,4 @@
-// function component
 function ProductAdd() {
-  // JSX
   return <div>ProductAdd</div>;
 }
 

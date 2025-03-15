@@ -1,7 +1,6 @@
-import { Image, Table, Button, Modal } from "antd";
+import { Image, Table } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import confirm from "antd/es/modal/confirm";
 
 function ProductList() {
   const getAllProduct = async () => {
@@ -14,25 +13,7 @@ function ProductList() {
     queryFn: getAllProduct,
   });
 
-  const handleEdit = (id) => {
-    console.log("Edit product with ID:", id);
-  };
-
-  const handleDelete = (id: string) => {
-    Modal.confirm({
-      title: "Bạn có muốn xóa không?",
-      onOk: async () => {
-        try {
-          await axios.delete(`http://localhost:3000/products/${id}`);
-          alert("Xóa thành công");
-          getAllProduct();
-        } catch (error) {
-          console.log(error);
-          alert("Lỗi");
-        }
-      },
-    });
-  };
+  console.log({ data, isLoading, error });
 
   const columns = [
     {
@@ -49,7 +30,7 @@ function ProductList() {
       title: "Image",
       dataIndex: "image",
       key: "image",
-      render: (image) => {
+      render: (image: string) => {
         return <Image src={image} width={100} />;
       },
     },
@@ -58,28 +39,8 @@ function ProductList() {
       dataIndex: "desc",
       key: "desc",
     },
-    {
-      title: "Actions",
-      key: "actions",
-      render: (text, record) => (
-        <>
-          <Button onClick={() => handleEdit(record.id)}>Edit</Button>
-          <Button
-            onClick={() => handleDelete(record.id)}
-            danger
-            style={{ marginLeft: 8 }}
-          >
-            Delete
-          </Button>
-        </>
-      ),
-    },
   ];
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading products</div>;
-
-  return <Table dataSource={data} columns={columns} rowKey="id" />;
+  return <Table dataSource={data} columns={columns} />;
 }
 
 export default ProductList;

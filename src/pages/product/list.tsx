@@ -1,24 +1,17 @@
 import { Image, Table } from "antd";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-// function component
 function ProductList() {
-  // JSX
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      price: 32,
-      image: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      desc: "mo ta",
-    },
-    {
-      key: "2",
-      name: "Mike 2",
-      price: 322,
-      image: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      desc: "mo ta",
-    },
-  ]; // products
+  const getAllProduct = async () => {
+    const { data } = await axios.get("http://localhost:3000/products");
+    return data;
+  };
+  const { data, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProduct,
+  });
+
   const columns = [
     {
       title: "Name",
@@ -35,7 +28,6 @@ function ProductList() {
       dataIndex: "image",
       key: "image",
       render: (image: string) => {
-        console.log(image);
         return <Image src={image} width={100} />;
       },
     },
@@ -46,7 +38,7 @@ function ProductList() {
     },
   ];
 
-  return <Table dataSource={dataSource} columns={columns} />;
+  return <Table dataSource={data} columns={columns} loading={isLoading} />;
 }
 
 export default ProductList;

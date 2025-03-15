@@ -2,9 +2,7 @@ import { Image, Table } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-// function component
 function ProductList() {
-  // call API ve
   const getAllProduct = async () => {
     const { data } = await axios.get("http://localhost:3000/products");
     return data;

@@ -11,6 +11,7 @@ import AdminLayout from "./pages/layout/AdminLayout";
 import ClientLayout from "./pages/layout/ClientLayout";
 import ProductDetail from "./pages/client/product/detail";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CheckoutPage from "./pages/client/checkout";
 const queryClient = new QueryClient();
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
         {
           path: "/",
           element: <Homepage />,
+        },
+        {
+          path: "/checkout",
+          element: <CheckoutPage />,
         },
         {
           path: "/product/:id",

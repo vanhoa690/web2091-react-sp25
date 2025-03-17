@@ -1,6 +1,6 @@
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { Button, Layout, Menu } from "antd";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const ClientLayout = () => {
   return (
@@ -11,6 +11,9 @@ const ClientLayout = () => {
           <Menu.Item key="1">Trang chủ</Menu.Item>
           <Menu.Item key="2">Sản phẩm</Menu.Item>
           <Menu.Item key="3">Liên hệ</Menu.Item>
+          <Menu.Item key="3">
+            <Link to={"/checkout"}>Checkout</Link>
+          </Menu.Item>
         </Menu>
       </Header>
 

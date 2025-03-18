@@ -1,8 +1,23 @@
-import { Button, Form, Input } from "antd";
+import { useMutation } from "@tanstack/react-query";
+import { Button, Form, Input, InputNumber } from "antd";
+import axios from "axios";
+
+type ProductForm = {
+  name: string;
+  price: number;
+};
 
 function ProductAdd() {
-  function onFinish(values: any) {
-    console.log(values);
+  const addProduct = async (data: ProductForm) => {
+    await axios.post("http://localhost:3000/products", data);
+  };
+
+  const { mutate } = useMutation({
+    mutationFn: addProduct,
+  });
+
+  function onFinish(values: ProductForm) {
+    mutate(values);
   }
   return (
     <div
@@ -19,7 +34,7 @@ function ProductAdd() {
           <Input />
         </Form.Item>
         <Form.Item label="Price" name="price">
-          <Input />
+          <InputNumber />
         </Form.Item>
         <Button type="primary" htmlType="submit">
           Submit

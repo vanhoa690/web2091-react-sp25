@@ -48,7 +48,7 @@ const CheckoutPage: React.FC = () => {
         style={{ width: "100%", marginBottom: 16 }}
         allowClear
       >
-        <Option value="VCB">Vietcombank</Option>
+        <Option value="NCB">NCB</Option>
         <Option value="BIDV">BIDV</Option>
         <Option value="VIB">VIB</Option>
       </Select>

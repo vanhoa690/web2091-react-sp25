@@ -13,6 +13,11 @@
       "price": 32,
       "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
       "desc": "mo ta"
+    },
+    {
+      "name": "1212",
+      "price": 1,
+      "id": 3
     }
   ],
   "users": []

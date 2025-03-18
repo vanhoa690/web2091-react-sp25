@@ -34,6 +34,16 @@
       "price": 30000,
       "image": "https://trasuadodo.vn/wp-content/uploads/2022/09/kinh-doanh-tra-sua-online-01-min.png",
       "desc": "Trà chanh thanh mát, hòa quyện cùng mật ong thiên nhiên."
+    },
+    {
+      "name": "1234",
+      "price": 123,
+      "id": 6
+    },
+    {
+      "name": "1234",
+      "price": 123,
+      "id": 7
     }
   ],
   "users": []

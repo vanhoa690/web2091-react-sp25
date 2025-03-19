@@ -7,10 +7,12 @@ import ProductAdd from "./pages/product/add";
 import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
 import Homepage from "./pages/Homepage";
-import AdminLayout from "./pages/layout/AdminLayout";
-import ClientLayout from "./pages/layout/ClientLayout";
 import ProductDetail from "./pages/client/product/detail";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ClientLayout from "./layout/ClientLayout";
+import AdminLayout from "./layout/AdminLayout";
+import UserList from "./pages/user/list";
+import DashboardPage from "./pages/dashboard";
 const queryClient = new QueryClient();
 
 function App() {
@@ -43,6 +45,14 @@ function App() {
       path: "admin",
       element: <AdminLayout />,
       children: [
+        {
+          path: "",
+          element: <DashboardPage />,
+        },
+        {
+          path: "user/list",
+          element: <UserList />,
+        },
         {
           path: "product/list",
           element: <ProductList />,

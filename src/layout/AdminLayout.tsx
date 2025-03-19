@@ -9,9 +9,7 @@ const AdminLayout = () => {
   const menuItems = [
     { key: "/admin", icon: <HomeOutlined />, label: "Dashboard" },
     { key: "/admin/product/list", icon: <ShopOutlined />, label: "Products" },
-    { key: "/admin/users", icon: <UserOutlined />, label: "Users" },
-    { key: "/auth/register", icon: <UserOutlined />, label: "Register" },
-    { key: "/auth/login", icon: <UserOutlined />, label: "Login" },
+    { key: "/admin/user/list", icon: <UserOutlined />, label: "Users" },
   ];
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -30,7 +28,7 @@ const AdminLayout = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["/admin/product/list"]}
+          defaultSelectedKeys={["/admin"]}
           onClick={({ key }) => nav(key)}
           items={menuItems}
         />

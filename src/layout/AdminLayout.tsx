@@ -1,4 +1,9 @@
-import { UserOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  HomeOutlined,
+  ShopOutlined,
+  SettingFilled,
+} from "@ant-design/icons";
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import { Layout, Menu } from "antd";
@@ -10,6 +15,11 @@ const AdminLayout = () => {
     { key: "/admin", icon: <HomeOutlined />, label: "Dashboard" },
     { key: "/admin/product/list", icon: <ShopOutlined />, label: "Products" },
     { key: "/admin/user/list", icon: <UserOutlined />, label: "Users" },
+    {
+      key: "/admin/category/list",
+      icon: <SettingFilled />,
+      label: "Categories",
+    },
   ];
   return (
     <Layout style={{ minHeight: "100vh" }}>

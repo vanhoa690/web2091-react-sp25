@@ -7,7 +7,7 @@ function UserList() {
     const { data } = await axios.get("/users");
     return data;
   };
-  const { data: products, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: getUserList,
   });
@@ -21,7 +21,7 @@ function UserList() {
     <div>
       <Table
         columns={columns}
-        dataSource={products}
+        dataSource={data}
         loading={isLoading}
         rowKey="id"
       />

@@ -8,12 +8,11 @@ import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
 import Homepage from "./pages/Homepage";
 import ProductDetail from "./pages/client/product/detail";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ClientLayout from "./layout/ClientLayout";
 import AdminLayout from "./layout/AdminLayout";
 import UserList from "./pages/user/list";
 import DashboardPage from "./pages/dashboard";
-const queryClient = new QueryClient();
+import CategoryList from "./pages/category/list";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3000";
@@ -50,6 +49,10 @@ function App() {
           element: <DashboardPage />,
         },
         {
+          path: "category/list",
+          element: <CategoryList />,
+        },
+        {
           path: "user/list",
           element: <UserList />,
         },
@@ -70,9 +73,7 @@ function App() {
   ];
   const element = useRoutes(routes);
 
-  return (
-    <QueryClientProvider client={queryClient}>{element}</QueryClientProvider>
-  );
+  return <main>{element}</main>;
 }
 
 export default App;

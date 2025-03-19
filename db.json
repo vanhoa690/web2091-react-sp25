@@ -19,6 +19,27 @@
       "price": 4.5,
       "category": 2,
       "image": "https://img.freepik.com/free-psd/close-up-ice-coffee-isolated_23-2151833577.jpg?"
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "image": "1",
+      "category": 2,
+      "description": "1",
+      "id": 4
+    },
+    {
+      "name": "1",
+      "price": "3",
+      "image": "1",
+      "isFeature": true,
+      "id": 5
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "image": "1",
+      "id": 6
     }
   ],
   "categories": [

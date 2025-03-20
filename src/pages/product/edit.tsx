@@ -26,13 +26,13 @@ function ProductEdit() {
   }, [product]);
 
   // onFinish: updateProduct: data, id + mutate trong useMutation
-  const addProduct = async (data: any) => {
+  const updateProduct = async (data: any) => {
     if (!id) return;
     await axios.put(`http://localhost:3000/products/${id}`, data);
   };
 
   const { mutate } = useMutation({
-    mutationFn: addProduct,
+    mutationFn: updateProduct,
     onSuccess: () => {
       message.success("Edit san pham thanh cong");
       nav("/product/list");

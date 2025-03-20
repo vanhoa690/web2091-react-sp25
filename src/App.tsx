@@ -24,19 +24,11 @@ function App() {
     },
   ]);
   return (
-    <div>
-      <Header style={{ display: "flex", alignItems: "center" }}>
-        <div style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}>
-          <Link to="/">React Antd</Link>
-        </div>
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["1"]}
-          style={{ marginLeft: "auto" }}
-        >
+    <Layout>
+      <Header>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">
-            <Link to="/">Home</Link>
+            <Link to="/">React Antd</Link>
           </Menu.Item>
           <Menu.Item key="2">
             <Link to="/product/list">Products</Link>
@@ -46,10 +38,8 @@ function App() {
           </Menu.Item>
         </Menu>
       </Header>
-      <div className="container" style={{ maxWidth: 500, margin: "auto" }}>
-        {element}
-      </div>
-    </div>
+      <main>{element}</main>
+    </Layout>
   );
 }
 

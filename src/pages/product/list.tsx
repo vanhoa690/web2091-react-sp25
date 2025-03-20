@@ -1,17 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
 import { Image, Table } from "antd";
-import axios from "axios";
+import { useList } from "../../hooks/useList";
 
 function ProductList() {
-  const getAllProduct = async () => {
-    const { data } = await axios.get("http://localhost:3000/products");
-    return data;
-  };
-  const { data, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: getAllProduct,
-  });
-
+  const { data, isLoading } = useList({ resource: "products" });
+  const dataResouce = data?.data?.map((product: any) => ({
+    key: product.id,
+    ...product,
+  }));
   const columns = [
     {
       title: "Name",
@@ -37,7 +32,12 @@ function ProductList() {
       key: "desc",
     },
   ];
-  return <Table dataSource={data} columns={columns} loading={isLoading} />;
+  return (
+    <div>
+      <h1>Product List</h1>
+      <Table dataSource={dataResouce} columns={columns} loading={isLoading} />
+    </div>
+  );
 }
 
 export default ProductList;

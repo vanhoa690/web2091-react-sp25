@@ -24,7 +24,7 @@ function App() {
     },
   ]);
   return (
-    <Layout>
+    <Layout style={{ minHeight: "100vh" }}>
       <Header>
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">

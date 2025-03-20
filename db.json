@@ -15,11 +15,9 @@
       "desc": "Trà sữa vị matcha thơm lừng, đậm đà, kết hợp với thạch matcha tươi."
     },
     {
-      "id": 3,
-      "name": "Trà sữa socola",
+      "name": "Trà sữa socola update",
       "price": 38000,
-      "image": "https://trasuadodo.vn/wp-content/uploads/2022/09/kinh-doanh-tra-sua-online-01-min.png",
-      "desc": "Trà sữa socola ngọt ngào, kết hợp cùng trân châu trắng giòn dai."
+      "id": 3
     },
     {
       "id": 4,
@@ -46,8 +44,8 @@
       "id": 7
     },
     {
-      "name": "2",
-      "price": 3,
+      "name": "22131231",
+      "price": 3123123,
       "id": 8
     },
     {

@@ -1,13 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import { Button, Form, Input, InputNumber } from "antd";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Button, Form, Input, InputNumber, message } from "antd";
 import axios from "axios";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ProductEdit() {
   // get data product theo id
   const { id } = useParams();
   const [form] = Form.useForm();
+  const nav = useNavigate();
 
   const getProductDetail = async () => {
     if (!id) return;
@@ -18,7 +19,6 @@ function ProductEdit() {
     queryKey: ["product"],
     queryFn: getProductDetail,
   });
-  console.log({ product });
 
   useEffect(() => {
     if (!product) return;
@@ -26,10 +26,27 @@ function ProductEdit() {
   }, [product]);
 
   // onFinish: updateProduct: data, id + mutate trong useMutation
+  const addProduct = async (data: any) => {
+    if (!id) return;
+    await axios.put(`http://localhost:3000/products/${id}`, data);
+  };
+
+  const { mutate } = useMutation({
+    mutationFn: addProduct,
+    onSuccess: () => {
+      message.success("Edit san pham thanh cong");
+      nav("/product/list");
+    },
+    onError: () => {},
+  });
+
+  function onFinish(values: any) {
+    mutate(values);
+  }
   return (
     <div>
       ProductEdit
-      <Form form={form}>
+      <Form form={form} onFinish={onFinish}>
         <Form.Item label="Name" name="name" rules={[{ required: true }]}>
           <Input />
         </Form.Item>

@@ -3,10 +3,7 @@ import { useList } from "../../hooks/useList";
 
 function ProductList() {
   const { data, isLoading } = useList({ resource: "products" });
-  const dataResouce = data?.data?.map((product: any) => ({
-    key: product.id,
-    ...product,
-  }));
+
   const columns = [
     {
       title: "Name",
@@ -35,7 +32,7 @@ function ProductList() {
   return (
     <div>
       <h1>Product List</h1>
-      <Table dataSource={dataResouce} columns={columns} loading={isLoading} />
+      <Table dataSource={data} columns={columns} loading={isLoading} />
     </div>
   );
 }

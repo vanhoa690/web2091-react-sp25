@@ -9,9 +9,7 @@ const API_URL = `http://localhost:3000`;
 const dataProvider = {
   getList: async ({ resource }: getListParams) => {
     const response = await axios.get(`${API_URL}/${resource}`);
-    return {
-      data: response.data,
-    };
+    return response.data;
   },
 };
 

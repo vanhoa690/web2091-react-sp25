@@ -15,14 +15,14 @@
       "desc": "mo ta"
     },
     {
-      "name": "1212",
-      "price": 1,
+      "name": "ten san pham update",
+      "price": 123,
       "id": 3
-    },
+    }
+  ],
+  "categories": [
     {
-      "name": "we",
-      "price": 2,
-      "id": 4
+      "id": 1
     }
   ],
   "users": []

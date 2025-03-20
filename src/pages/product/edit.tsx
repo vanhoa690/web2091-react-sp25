@@ -1,6 +1,9 @@
 import { Button, Form, Input, InputNumber } from "antd";
 
 function ProductEdit() {
+  // lay data theo id ve : useQuery + useParams lay id va data
+  // data vao form : useForm trong Form cua Antd
+  // onFinish = useMutation
   return (
     <div>
       ProductEdit

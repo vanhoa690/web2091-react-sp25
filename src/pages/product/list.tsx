@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Image, Table } from "antd";
+import { Button, Image, Table } from "antd";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ProductList() {
   const getAllProduct = async () => {
@@ -35,6 +36,22 @@ function ProductList() {
       title: "Description",
       dataIndex: "desc",
       key: "desc",
+    },
+    {
+      title: "Actions",
+      render: (product: any) => {
+        console.log({ product });
+        return (
+          <>
+            <Button type="primary">
+              <Link to={`/product/${product.id}/edit`}>Edit</Link>
+            </Button>
+            <Button variant="filled" color="danger">
+              Delete
+            </Button>
+          </>
+        );
+      },
     },
   ];
   return <Table dataSource={data} columns={columns} loading={isLoading} />;

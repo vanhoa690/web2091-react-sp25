@@ -25,9 +25,7 @@ function ProductEdit() {
     form.setFieldsValue(product);
   }, [product]);
 
-  // dien data vao form
-  // useForm trong Form Antd
-  // onFinish
+  // onFinish: updateProduct: data, id + mutate trong useMutation
   return (
     <div>
       ProductEdit

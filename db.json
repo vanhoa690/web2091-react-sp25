@@ -20,5 +20,6 @@
       "id": 3
     }
   ],
+  "categories": [{ "id": 1 }],
   "users": []
 }

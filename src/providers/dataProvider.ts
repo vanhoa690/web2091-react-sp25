@@ -8,6 +8,11 @@ type getOneParams = {
   resource: string;
   id: string | number;
 };
+
+type createParams = {
+  resource: string;
+};
+
 const API_URL = `http://localhost:3000`;
 
 const dataProvider = {
@@ -19,6 +24,10 @@ const dataProvider = {
     const response = await axios.get(`${API_URL}/${resource}/${id}`);
     return response.data;
   },
+  create: async ({ resource }: createParams) => {
+    const response = await axios.post(`${API_URL}/${resource}`);
+    return response.data;
+  },
 };
 
-export const { getList, getOne } = dataProvider;
+export const { getList, getOne, create } = dataProvider;

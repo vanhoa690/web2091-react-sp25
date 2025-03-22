@@ -8,12 +8,12 @@ function ProductEdit() {
   const { id } = useParams();
   const [form] = Form.useForm();
   const { data: product } = useOne({ resource: "products", id });
-  console.log(product);
 
   useEffect(() => {
     if (!product) return;
     form.setFieldsValue(product);
   }, [product]);
+
   const { mutate } = useUpdate({
     resource: "products",
     id,

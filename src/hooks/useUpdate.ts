@@ -11,7 +11,7 @@ type useListParams = {
 export const useUpdate = ({ resource, id }: useListParams) => {
   const nav = useNavigate();
   return useMutation({
-    mutationFn: (data: ProductForm) => update({ resource, data, id }),
+    mutationFn: (values: ProductForm) => update({ resource, values, id }),
     onSuccess: () => {
       message.success("update ok");
       nav(`/${resource}`);

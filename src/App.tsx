@@ -3,7 +3,7 @@ import ProductList from "./pages/product/list";
 import ProductAdd from "./pages/product/add";
 import ProductEdit from "./pages/product/edit";
 import { Layout, Menu } from "antd";
-import "antd/dist/reset.css"; // Ant Design v5 reset styles
+import "antd/dist/reset.css";
 import { Link } from "react-router-dom";
 
 const { Header } = Layout;

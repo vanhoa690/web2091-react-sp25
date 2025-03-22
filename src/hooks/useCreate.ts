@@ -10,10 +10,10 @@ type useListParams = {
 export const useCreate = ({ resource }: useListParams) => {
   const nav = useNavigate();
   return useMutation({
-    mutationFn: (data: ProductForm) => create({ resource, data }),
+    mutationFn: (values: ProductForm) => create({ resource, values }),
     onSuccess: () => {
       message.success("add ok");
-      nav(`/${resource}/list`);
+      nav(`/${resource}`);
     },
   });
 };

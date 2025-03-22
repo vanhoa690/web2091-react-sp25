@@ -1,10 +1,11 @@
-import { Button, Image, Table } from "antd";
+import { Button, Image, Popconfirm, Space, Table } from "antd";
 import { useList } from "../../hooks/useList";
 import { Link } from "react-router-dom";
+import { useDelete } from "../../hooks/useDelete";
 
 function ProductList() {
   const { data, isLoading } = useList({ resource: "products" });
-
+  const { mutate } = useDelete({ resource: "products" });
   const columns = [
     {
       title: "ID",
@@ -38,9 +39,20 @@ function ProductList() {
       title: "Actions",
       render: (product: any) => {
         return (
-          <Button type="primary">
-            <Link to={`/product/${product.id}/edit`}>Edit</Link>
-          </Button>
+          <Space>
+            <Button type="primary">
+              <Link to={`/product/${product.id}/edit`}>Edit</Link>
+            </Button>
+            <Popconfirm
+              title="Delete the product"
+              description="Are you sure to delete this product?"
+              onConfirm={() => mutate(product.id)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button danger>Delete</Button>
+            </Popconfirm>
+          </Space>
         );
       },
     },

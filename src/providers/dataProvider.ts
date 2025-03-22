@@ -26,7 +26,7 @@ type updateParams = {
 
 type deleteParams = {
   resource: string;
-  id: string | number;
+  id?: string | number;
 };
 
 axios.defaults.baseURL = "http://localhost:3000/";
@@ -51,6 +51,7 @@ const dataProvider = {
     return data;
   },
   deleteOne: async ({ resource, id }: deleteParams) => {
+    if (!id) return;
     const { data } = await axios.delete(`${resource}/${id}`);
     return data;
   },

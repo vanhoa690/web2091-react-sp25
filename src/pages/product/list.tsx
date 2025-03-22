@@ -1,10 +1,16 @@
-import { Image, Table } from "antd";
+import { Button, Image, Table } from "antd";
 import { useList } from "../../hooks/useList";
+import { Link } from "react-router-dom";
 
 function ProductList() {
   const { data, isLoading } = useList({ resource: "products" });
 
   const columns = [
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
     {
       title: "Name",
       dataIndex: "name",
@@ -27,6 +33,16 @@ function ProductList() {
       title: "Description",
       dataIndex: "desc",
       key: "desc",
+    },
+    {
+      title: "Actions",
+      render: (product: any) => {
+        return (
+          <Button type="primary">
+            <Link to={`/product/${product.id}/edit`}>Edit</Link>
+          </Button>
+        );
+      },
     },
   ];
   return (

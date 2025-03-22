@@ -1,11 +1,9 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "San pham A",
+      "name": "San pham A23234 344333",
       "price": 32,
-      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      "desc": "mo ta"
+      "id": 1
     },
     {
       "id": 2,
@@ -18,8 +16,32 @@
       "name": "ten san pham",
       "price": 123,
       "id": 3
+    },
+    {
+      "name": "1",
+      "price": 2,
+      "id": 4
+    },
+    {
+      "name": "1",
+      "price": 2,
+      "id": 5
+    },
+    {
+      "name": "2",
+      "price": 3,
+      "id": 6
+    },
+    {
+      "name": "1231",
+      "price": 12312,
+      "id": 7
     }
   ],
-  "categories": [{ "id": 1 }],
+  "categories": [
+    {
+      "id": 1
+    }
+  ],
   "users": []
 }

@@ -1,12 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber } from "antd";
-import axios from "axios";
 import { useCreate } from "../../hooks/useCreate";
-
-type ProductForm = {
-  name: string;
-  price: number;
-};
 
 function ProductAdd() {
   const { mutate } = useCreate({

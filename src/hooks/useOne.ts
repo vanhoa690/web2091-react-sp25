@@ -7,9 +7,9 @@ type useOneParams = {
 };
 
 export const useOne = ({ resource, id }: useOneParams) => {
-  if (!id) return;
   return useQuery({
-    queryKey: [resource],
+    queryKey: [resource, id],
     queryFn: () => getOne({ resource, id }),
+    enabled: !!id,
   });
 };

@@ -29,29 +29,29 @@ type deleteParams = {
   id: string | number;
 };
 
-const API_URL = `http://localhost:3000`;
+axios.defaults.baseURL = "http://localhost:3000/";
 
 const dataProvider = {
   getList: async ({ resource }: getListParams) => {
-    const { data } = await axios.get(`${API_URL}/${resource}`);
+    const { data } = await axios.get(resource);
     return data;
   },
   getOne: async ({ resource, id }: getOneParams) => {
     if (!id) return;
-    const { data } = await axios.get(`${API_URL}/${resource}/${id}`);
+    const { data } = await axios.get(`${resource}/${id}`);
     return data;
   },
   create: async ({ resource, values }: createParams) => {
-    const { data } = await axios.post(`${API_URL}/${resource}`, values);
+    const { data } = await axios.post(`${resource}`, values);
     return data;
   },
   update: async ({ resource, values, id }: updateParams) => {
     if (!id) return;
-    const { data } = await axios.put(`${API_URL}/${resource}/${id}`, values);
+    const { data } = await axios.put(`${resource}/${id}`, values);
     return data;
   },
   deleteOne: async ({ resource, id }: deleteParams) => {
-    const { data } = await axios.delete(`${API_URL}/${resource}/${id}`);
+    const { data } = await axios.delete(`${resource}/${id}`);
     return data;
   },
 };

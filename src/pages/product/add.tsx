@@ -7,7 +7,8 @@ type ProductForm = {
 };
 
 function ProductAdd() {
-  const { mutate } = useCreate({ resource: "products" });
+  // useState<ProductForm>()
+  const { mutate } = useCreate<ProductForm>({ resource: "products" });
 
   function onFinish(values: ProductForm) {
     mutate(values);

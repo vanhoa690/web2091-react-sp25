@@ -1,10 +1,10 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { create, getList } from "../providers";
 
-type Props = {
+type Props<T> = {
   resource: string;
   id?: number | string;
-  values?: any;
+  values?: T;
 };
 
 export const useList = ({ resource = "products" }) => {
@@ -20,18 +20,22 @@ export const useOne = ({ resource = "products" }) => {
 };
 
 // useCreate: addData
-export const useCreate = ({ resource = "products" }) => {
+export const useCreate = <T>({ resource = "products" }: Props<T>) => {
   return useMutation({
-    mutationFn: (values: any) => create({ resource, values }),
+    mutationFn: (values: T) => create({ resource, values }),
   });
 };
 
 // useUpdate: updateData
-export const useUpdate = ({ resource = "products", id, values }: Props) => {
+export const useUpdate = <T>({
+  resource = "products",
+  id,
+  values,
+}: Props<T>) => {
   console.log({ resource, id, values });
 };
 
 // useDelete : deleteOne
-export const useDelete = ({ resource = "products", id }: Props) => {
+export const useDelete = <T>({ resource = "products", id }: Props<T>) => {
   console.log({ resource, id });
 };

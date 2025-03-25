@@ -2,10 +2,10 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:3000/";
 
-type ProviderProps = {
+type ProviderProps<T> = {
   resource: string;
   id?: number | string;
-  values?: any;
+  values?: T;
 };
 
 export const getList = async ({ resource = "products" }) => {
@@ -13,40 +13,40 @@ export const getList = async ({ resource = "products" }) => {
   return data;
 };
 
-export const getDetail = async ({
+export const getDetail = async <T>({
   resource = "products",
   id,
-}: ProviderProps) => {
+}: ProviderProps<T>) => {
   if (!id) return;
   const { data } = await axios.get(`${resource}/${id}`);
   return data;
 };
 
 // create
-export const create = async ({
+export const create = async <T>({
   resource = "products",
   values,
-}: ProviderProps) => {
+}: ProviderProps<T>) => {
   const { data } = await axios.post(resource, values);
   return data;
 };
 
 // update
-export const update = async ({
+export const update = async <T>({
   resource = "products",
   id,
   values,
-}: ProviderProps) => {
+}: ProviderProps<T>) => {
   if (!id) return;
   const { data } = await axios.put(resource, values);
   return data;
 };
 
 // delete
-export const deleteOne = async ({
+export const deleteOne = async <T>({
   resource = "products",
   id,
-}: ProviderProps) => {
+}: ProviderProps<T>) => {
   if (!id) return;
   const { data } = await axios.delete(`${resource}/${id}`);
   return data;

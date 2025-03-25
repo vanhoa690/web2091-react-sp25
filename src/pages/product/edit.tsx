@@ -1,22 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber } from "antd";
-import axios from "axios";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getDetail } from "../../providers";
 
 function ProductEdit() {
   const { id } = useParams();
   const [form] = Form.useForm();
 
-  const getProductDetail = async () => {
-    if (!id) return;
-    const { data } = await axios.get(`http://localhost:3000/products/${id}`);
-    return data;
-  };
-
   const { data: product } = useQuery({
     queryKey: ["product"],
-    queryFn: getProductDetail,
+    queryFn: () => getDetail({ resource: "products", id }),
   });
   console.log(product);
 

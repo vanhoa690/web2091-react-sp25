@@ -15,7 +15,7 @@ export const getList = async ({ resource = "products" }) => {
 
 // getOne
 export const getOne = async ({ resource = "products", id }: Props) => {
-  if (id) return;
+  if (!id) return;
   const { data } = await axios.get(`${resource}/${id}`);
   return data;
 };
@@ -27,13 +27,13 @@ export const create = async ({ resource = "products", values }: Props) => {
 
 // update
 export const update = async ({ resource = "products", id, values }: Props) => {
-  if (id) return;
+  if (!id) return;
   const { data } = await axios.put(`${resource}/${id}`, values);
   return data;
 };
 // deleteOne
 export const deleteOne = async ({ resource = "products", id }: Props) => {
-  if (id) return;
+  if (!id) return;
   const { data } = await axios.delete(`${resource}/${id}`);
   return data;
 };

@@ -1,7 +1,8 @@
 // Hook
 
-import { useQuery } from "@tanstack/react-query";
-import { getList, getOne, Props } from "../providers";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { deleteOne, getList, getOne, Props } from "../providers";
+import { message } from "antd";
 
 export const useList = ({ resource = "products" }) => {
   return useQuery({
@@ -11,6 +12,7 @@ export const useList = ({ resource = "products" }) => {
 };
 
 // useOne -> getOne
+
 export const useOne = ({ resource = "products", id }: Props) => {
   return useQuery({
     queryKey: [resource, id],
@@ -20,3 +22,12 @@ export const useOne = ({ resource = "products", id }: Props) => {
 // useCreate -> create
 // useUpdate -> update
 // useDelete -> deleteOne
+export const useDelete = ({ resource = "products" }: Props) => {
+  console.log("ok");
+  return useMutation({
+    mutationFn: (id?: string | number) => deleteOne({ resource, id }),
+    onSuccess: () => {
+      message.success("Xoa thanh cong");
+    },
+  });
+};

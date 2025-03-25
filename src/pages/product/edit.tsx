@@ -1,20 +1,14 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber, message } from "antd";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getOne, update } from "../../providers";
-import { useUpdate } from "../../hooks";
+import { useOne, useUpdate } from "../../hooks";
 
 function ProductEdit() {
   // get data product theo id
   const { id } = useParams();
   const [form] = Form.useForm();
-  const nav = useNavigate();
 
-  const { data: product } = useQuery({
-    queryKey: ["product"],
-    queryFn: () => getOne({ resource: "products", id }),
-  });
+  const { data: product } = useOne({ resource: "products", id });
 
   useEffect(() => {
     if (!product) return;

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { create, deleteOne, getList, getOne, update } from "../providers";
 import { message } from "antd";
 
@@ -42,10 +42,13 @@ export const useUpdate = ({ resource = "products", id }: Props) => {
 };
 
 export const useDelete = ({ resource = "products" }: Props) => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id?: number | string) => deleteOne({ resource, id }),
     onSuccess: () => {
       message.success("Xoa thanh cong");
+      // cap nhat danh sach sau khi xoa
+      queryClient.invalidateQueries({ queryKey: [resource] });
     },
     onError: () => {},
   });

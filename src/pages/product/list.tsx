@@ -2,15 +2,16 @@ import { Button, Image, Table } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { getList } from "../../providers";
 
 function ProductList() {
-  const getAllProduct = async () => {
-    const { data } = await axios.get("http://localhost:3000/products");
-    return data;
-  };
+  // const getAllProduct = async () => {
+  //   const { data } = await axios.get("http://localhost:3000/products");
+  //   return data;
+  // };
   const { data, isLoading } = useQuery({
     queryKey: ["products"],
-    queryFn: getAllProduct,
+    queryFn: () => getList({ resource: "products" }),
   });
 
   const columns = [

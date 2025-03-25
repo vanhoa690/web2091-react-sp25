@@ -2,7 +2,7 @@
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:3000/";
 
-type Props = {
+export type Props = {
   resource: string;
   id?: number | string;
   values?: any;

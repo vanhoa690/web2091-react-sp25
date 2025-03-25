@@ -1,7 +1,7 @@
 // Hook
 
 import { useQuery } from "@tanstack/react-query";
-import { getList } from "../providers";
+import { getList, getOne, Props } from "../providers";
 
 export const useList = ({ resource = "products" }) => {
   return useQuery({
@@ -9,3 +9,14 @@ export const useList = ({ resource = "products" }) => {
     queryFn: () => getList({ resource }),
   });
 };
+
+// useOne -> getOne
+export const useOne = ({ resource = "products", id }: Props) => {
+  return useQuery({
+    queryKey: [resource, id],
+    queryFn: () => getOne({ resource, id }),
+  });
+};
+// useCreate -> create
+// useUpdate -> update
+// useDelete -> deleteOne

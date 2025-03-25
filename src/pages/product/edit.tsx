@@ -3,18 +3,14 @@ import { Button, Form, Input, InputNumber, message } from "antd";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOne, update } from "../../providers";
+import { useOne } from "../../hooks";
 
 function ProductEdit() {
-  // lay data theo id ve : useQuery + useParams lay id va data
   const { id } = useParams();
   const [form] = Form.useForm();
 
-  const { data: product } = useQuery({
-    queryKey: ["product"],
-    queryFn: () => getOne({ resource: "products", id }),
-  });
+  const { data: product } = useOne({ resource: "products", id });
 
-  // data vao form : useForm trong Form cua Antd
   useEffect(() => {
     if (!product) return;
     form.setFieldsValue(product);

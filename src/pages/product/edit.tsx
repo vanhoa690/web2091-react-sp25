@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber } from "antd";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getDetail } from "../../providers";
+import { getOne } from "../../providers";
 
 function ProductEdit() {
   const { id } = useParams();
@@ -10,7 +10,7 @@ function ProductEdit() {
 
   const { data: product } = useQuery({
     queryKey: ["product"],
-    queryFn: () => getDetail({ resource: "products", id }),
+    queryFn: () => getOne({ resource: "products", id }),
   });
   console.log(product);
 

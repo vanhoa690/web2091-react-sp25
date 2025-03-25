@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { create, getList } from "../providers";
+import { create, deleteOne, getList, getOne, update } from "../providers";
 
 type Props = {
   resource: string;
@@ -15,8 +15,11 @@ export const useList = ({ resource = "products" }) => {
 };
 
 // useOne: getDetail
-export const useOne = ({ resource = "products" }) => {
-  console.log({ resource });
+export const useOne = ({ resource = "products", id }: Props) => {
+  return useQuery({
+    queryKey: [resource, id],
+    queryFn: () => getOne({ resource, id }),
+  });
 };
 
 // useCreate: addData
@@ -27,11 +30,14 @@ export const useCreate = ({ resource = "products" }) => {
 };
 
 // useUpdate: updateData
-export const useUpdate = ({ resource = "products", id, values }: Props) => {
-  console.log({ resource, id, values });
+export const useUpdate = ({ resource = "products", id }: Props) => {
+  return useMutation({
+    mutationFn: (values: any) => update({ resource, id, values }),
+  });
 };
-
 // useDelete : deleteOne
-export const useDelete = ({ resource = "products", id }: Props) => {
-  console.log({ resource, id });
+export const useDelete = ({ resource = "products" }: Props) => {
+  return useMutation({
+    mutationFn: (id?: string | number) => deleteOne({ resource, id }),
+  });
 };

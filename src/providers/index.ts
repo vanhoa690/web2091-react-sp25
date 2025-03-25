@@ -1,5 +1,4 @@
 // API CRUD
-
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:3000/";
 
@@ -16,19 +15,25 @@ export const getList = async ({ resource = "products" }) => {
 
 // getOne
 export const getOne = async ({ resource = "products", id }: Props) => {
-  console.log(resource, id);
+  if (id) return;
+  const { data } = await axios.get(`${resource}/${id}`);
+  return data;
 };
 // create
 export const create = async ({ resource = "products", values }: Props) => {
-  console.log(resource, values);
+  const { data } = await axios.post(resource, values);
+  return data;
 };
 
 // update
 export const update = async ({ resource = "products", id, values }: Props) => {
-  console.log(resource, id), values;
+  if (id) return;
+  const { data } = await axios.put(`${resource}/${id}`, values);
+  return data;
 };
-
 // deleteOne
 export const deleteOne = async ({ resource = "products", id }: Props) => {
-  console.log(resource, id);
+  if (id) return;
+  const { data } = await axios.delete(`${resource}/${id}`);
+  return data;
 };

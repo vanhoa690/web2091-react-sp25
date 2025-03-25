@@ -1,6 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber } from "antd";
-import { create } from "../../providers";
+import { useCreate } from "../../hooks";
 
 type ProductForm = {
   name: string;
@@ -8,10 +7,7 @@ type ProductForm = {
 };
 
 function ProductAdd() {
-  const { mutate } = useMutation({
-    mutationFn: (values: ProductForm) =>
-      create({ resource: "products", values }),
-  });
+  const { mutate } = useCreate({ resource: "products" });
 
   function onFinish(values: ProductForm) {
     mutate(values);

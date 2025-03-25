@@ -1,22 +1,17 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber, message } from "antd";
-import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { getOne, update } from "../../providers";
 
 function ProductEdit() {
   // lay data theo id ve : useQuery + useParams lay id va data
   const { id } = useParams();
   const [form] = Form.useForm();
 
-  const getProductDetail = async () => {
-    if (!id) return;
-    const { data } = await axios.get(`http://localhost:3000/products/${id}`);
-    return data;
-  };
   const { data: product } = useQuery({
     queryKey: ["product"],
-    queryFn: getProductDetail,
+    queryFn: () => getOne({ resource: "products", id }),
   });
 
   // data vao form : useForm trong Form cua Antd
@@ -27,13 +22,9 @@ function ProductEdit() {
 
   // onFinish = useMutation
   const nav = useNavigate();
-  const updateProduct = async (data: any) => {
-    if (!id) return;
-    await axios.put(`http://localhost:3000/products/${id}`, data);
-  };
 
   const { mutate } = useMutation({
-    mutationFn: updateProduct,
+    mutationFn: (values: any) => update({ resource: "products", id, values }),
     onSuccess: () => {
       message.success("edit thanh cong");
       nav("/product/list");

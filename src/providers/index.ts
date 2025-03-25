@@ -15,10 +15,19 @@ export const getList = async ({ resource = "products" }) => {
   return data;
 };
 // getOne
+export const getOne = async ({ resource = "products" }) => {
+  console.log(resource);
+};
 // create
+export const create = async ({ resource = "products", values }: Props) => {
+  console.log(resource);
+};
 // update
 export const update = async ({ resource = "products", id, values }: Props) => {
   const { data } = await axios.put(`${resource}/${id}`, values);
   return data;
 };
 // delete
+export const deleteOne = async ({ resource = "products", id }: Props) => {
+  console.log(resource);
+};

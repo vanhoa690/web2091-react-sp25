@@ -11,7 +11,7 @@ const { Header } = Layout;
 function App() {
   const element = useRoutes([
     {
-      path: "/product/list",
+      path: "/products",
       element: <ProductList />,
     },
     {
@@ -31,7 +31,7 @@ function App() {
             <Link to="/">React Antd</Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to="/product/list">Products</Link>
+            <Link to="/products">Products</Link>
           </Menu.Item>
           <Menu.Item key="3">
             <Link to="/product/add">Add Product</Link>

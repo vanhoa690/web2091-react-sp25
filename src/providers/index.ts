@@ -35,7 +35,7 @@ export const update = async ({
   values,
 }: ProviderProps) => {
   if (!id) return;
-  const { data } = await axios.put(resource, values);
+  const { data } = await axios.put(`${resource}/${id}`, values);
   return data;
 };
 

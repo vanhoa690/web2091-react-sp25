@@ -1,23 +1,9 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "San pham A",
-      "price": 32,
-      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      "desc": "mo ta"
-    },
-    {
-      "id": 2,
-      "name": "San pham A",
-      "price": 32,
-      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      "desc": "mo ta"
-    },
-    {
-      "name": "ten san pham",
+      "name": "123c update",
       "price": 123,
-      "id": 3
+      "id": 1
     }
   ],
   "users": []

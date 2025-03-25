@@ -1,6 +1,6 @@
 // Hook
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteOne, getList, getOne, Props } from "../providers";
 import { message } from "antd";
 
@@ -23,11 +23,12 @@ export const useOne = ({ resource = "products", id }: Props) => {
 // useUpdate -> update
 // useDelete -> deleteOne
 export const useDelete = ({ resource = "products" }: Props) => {
-  console.log("ok");
+  const qc = useQueryClient();
   return useMutation({
     mutationFn: (id?: string | number) => deleteOne({ resource, id }),
     onSuccess: () => {
       message.success("Xoa thanh cong");
+      qc.invalidateQueries({ queryKey: [resource] });
     },
   });
 };

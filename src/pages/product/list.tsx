@@ -1,4 +1,4 @@
-import { Button, Image, Space, Table } from "antd";
+import { Button, Image, Popconfirm, Space, Table } from "antd";
 import { Link } from "react-router-dom";
 import { useDelete, useList } from "../../hooks";
 
@@ -38,7 +38,15 @@ function ProductList() {
             <Button type="primary">
               <Link to={`/product/${product.id}/edit`}>Edit</Link>
             </Button>
-            <Button onClick={() => mutate(product.id)}>Delete</Button>
+            <Popconfirm
+              title="Delete the task"
+              description="Are you sure to delete this task?"
+              onConfirm={() => mutate(product.id)}
+              okText="Cos"
+              cancelText="ko"
+            >
+              <Button danger>Delete</Button>
+            </Popconfirm>
           </Space>
         );
       },

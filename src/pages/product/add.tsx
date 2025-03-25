@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber } from "antd";
-import axios from "axios";
+import { create } from "../../providers";
 
 type ProductForm = {
   name: string;
@@ -8,12 +8,9 @@ type ProductForm = {
 };
 
 function ProductAdd() {
-  const addProduct = async (data: ProductForm) => {
-    await axios.post("http://localhost:3000/products", data);
-  };
-
   const { mutate } = useMutation({
-    mutationFn: addProduct,
+    mutationFn: (values: ProductForm) =>
+      create({ resource: "products", values }),
   });
 
   function onFinish(values: ProductForm) {

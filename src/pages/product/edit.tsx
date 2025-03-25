@@ -3,6 +3,7 @@ import { Button, Form, Input, InputNumber, message } from "antd";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOne, update } from "../../providers";
+import { useUpdate } from "../../hooks";
 
 function ProductEdit() {
   // get data product theo id
@@ -20,14 +21,7 @@ function ProductEdit() {
     form.setFieldsValue(product);
   }, [product]);
 
-  const { mutate } = useMutation({
-    mutationFn: (values: any) => update({ resource: "products", id, values }),
-    onSuccess: () => {
-      message.success("Edit san pham thanh cong");
-      nav("/product/list");
-    },
-    onError: () => {},
-  });
+  const { mutate } = useUpdate({ resource: "products", id });
 
   function onFinish(values: any) {
     mutate(values);

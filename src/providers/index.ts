@@ -15,12 +15,15 @@ export const getList = async ({ resource = "products" }) => {
   return data;
 };
 // getOne
-export const getOne = async ({ resource = "products" }) => {
-  console.log(resource);
+export const getOne = async ({ resource = "products", id }: Props) => {
+  if (!id) return;
+  const { data } = await axios.get(`${resource}/${id}`); // http://localhost:3000/products/1";
+  return data;
 };
 // create
 export const create = async ({ resource = "products", values }: Props) => {
-  console.log(resource);
+  const { data } = await axios.post(resource, values); // http://localhost:3000/products";
+  return data;
 };
 // update
 export const update = async ({ resource = "products", id, values }: Props) => {
@@ -29,5 +32,7 @@ export const update = async ({ resource = "products", id, values }: Props) => {
 };
 // delete
 export const deleteOne = async ({ resource = "products", id }: Props) => {
-  console.log(resource);
+  if (!id) return;
+  const { data } = await axios.delete(`${resource}/${id}`);
+  return data;
 };

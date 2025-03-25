@@ -6,7 +6,7 @@ import { getList } from "../../providers";
 function ProductList() {
   const { data, isLoading } = useQuery({
     queryKey: ["products"],
-    queryFn: () => getList({ resource: "products" }),
+    queryFn: () => getList({ resource: "categories" }),
   });
 
   const columns = [

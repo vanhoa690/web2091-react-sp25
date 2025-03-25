@@ -1,13 +1,9 @@
 import { Button, Image, Table } from "antd";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { getList } from "../../providers";
+import { useList } from "../../hooks";
 
 function ProductList() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => getList({ resource: "products" }),
-  });
+  const { data, isLoading } = useList({ resource: "products" });
 
   const columns = [
     {

@@ -1,14 +1,9 @@
 import { Button, Image, Table } from "antd";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { getList } from "../../providers";
+import { useList } from "../../hooks";
 
-function ProductList() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => getList({ resource: "categories" }),
-  });
-
+function CategoryList() {
+  const { data, isLoading } = useList({ resource: "categories" });
   const columns = [
     {
       title: "Name",
@@ -48,4 +43,4 @@ function ProductList() {
   return <Table dataSource={data} columns={columns} loading={isLoading} />;
 }
 
-export default ProductList;
+export default CategoryList;

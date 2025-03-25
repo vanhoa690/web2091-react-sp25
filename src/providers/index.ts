@@ -2,14 +2,10 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:3000/";
 
-type FormData = {
-  name: string;
-  price: number;
-};
 type ProviderProps = {
   resource: string;
   id?: number | string;
-  values?: FormData;
+  values?: any;
 };
 
 export const getList = async ({ resource = "products" }) => {

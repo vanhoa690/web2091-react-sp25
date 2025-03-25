@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getList, update } from "../providers";
+import { create, deleteOne, getList, getOne, update } from "../providers";
 import { message } from "antd";
 
 type Props = {
@@ -15,16 +15,15 @@ export const useList = ({ resource = "products" }: Props) => {
 };
 
 export const useOne = ({ resource = "products", id }: Props) => {
-  console.log(resource, id);
+  return useQuery({
+    queryKey: [resource, id],
+    queryFn: () => getOne({ resource, id }),
+  });
 };
 
 export const useCreate = ({ resource = "products" }: Props) => {
-  console.log(resource);
-};
-
-export const useUpdate = ({ resource = "products", id }: Props) => {
   return useMutation({
-    mutationFn: (values: any) => update({ resource, id, values }),
+    mutationFn: (values: any) => create({ resource, values }),
     onSuccess: () => {
       message.success("Them thanh cong");
     },
@@ -32,6 +31,22 @@ export const useUpdate = ({ resource = "products", id }: Props) => {
   });
 };
 
+export const useUpdate = ({ resource = "products", id }: Props) => {
+  return useMutation({
+    mutationFn: (values: any) => update({ resource, id, values }),
+    onSuccess: () => {
+      message.success("Update thanh cong");
+    },
+    onError: () => {},
+  });
+};
+
 export const useDelete = ({ resource = "products" }: Props) => {
-  console.log(resource);
+  return useMutation({
+    mutationFn: (id?: number | string) => deleteOne({ resource, id }),
+    onSuccess: () => {
+      message.success("Xoa thanh cong");
+    },
+    onError: () => {},
+  });
 };

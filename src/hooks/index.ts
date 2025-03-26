@@ -1,5 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { create, deleteOne, getList, getOne, update } from "../providers";
+import {
+  create,
+  deleteOne,
+  getList,
+  getOne,
+  login,
+  register,
+  update,
+} from "../providers";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -59,6 +67,29 @@ export const useDelete = ({ resource = "products" }: Props) => {
       message.success("Xoa thanh cong");
       // cap nhat lai danh sach
       queryClient.invalidateQueries({ queryKey: [resource] });
+    },
+  });
+};
+
+// useCreate: addData
+export const useRegister = ({ resource = "register" }) => {
+  const nav = useNavigate();
+  return useMutation({
+    mutationFn: (values: any) => register({ resource, values }),
+    onSuccess: () => {
+      message.success("them thanh cong");
+      nav("/login");
+    },
+  });
+};
+
+// useCreate: addData
+export const useLogin = ({ resource = "login" }) => {
+  return useMutation({
+    mutationFn: (values: any) => login({ resource, values }),
+    onSuccess: (data) => {
+      message.success("login thanh cong");
+      localStorage.setItem("token", data.accessToken);
     },
   });
 };

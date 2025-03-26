@@ -4,7 +4,18 @@
       "name": "123c update",
       "price": 123,
       "id": 1
+    },
+    {
+      "email": "hoadv21@fpt.edu.vn",
+      "password": "123456",
+      "id": 2
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "hoadv21@fpt.edu.vn",
+      "password": "$2a$10$wqKDq6wR/Vvb/2bzyCFVu.OB9DhUB7B8FAhvlrbrKoTnPZWEoJyiC",
+      "id": 1
+    }
+  ]
 }

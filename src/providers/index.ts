@@ -37,3 +37,12 @@ export const deleteOne = async ({ resource = "products", id }: Props) => {
   const { data } = await axios.delete(`${resource}/${id}`);
   return data;
 };
+
+//http://localhost:3000/register
+//http://localhost:3000/login
+
+// auth provider: register || login
+export const auth = async ({ resource = "register", values }: Props) => {
+  const { data } = await axios.post(resource, values);
+  return data;
+};

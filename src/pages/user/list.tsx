@@ -1,8 +1,6 @@
 import { Button, Image, Popconfirm, Space, Table } from "antd";
 import { Link } from "react-router-dom";
 import { useDelete, useList } from "../../hooks";
-import { useQuery } from "@tanstack/react-query";
-import { getList } from "../../providers";
 
 function ProductList() {
   const { data, isLoading } = useList({

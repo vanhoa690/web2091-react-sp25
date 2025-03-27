@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { create, deleteOne, getList, getOne, update } from "../providers";
+import { auth, create, deleteOne, getList, getOne, update } from "../providers";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -60,5 +60,12 @@ export const useDelete = ({ resource = "products" }: Props) => {
       // cap nhat lai danh sach
       queryClient.invalidateQueries({ queryKey: [resource] });
     },
+  });
+};
+
+export const useAuth = ({ resource = "register" }) => {
+  return useMutation({
+    mutationFn: (values) => auth({ resource, values }),
+    onSuccess: () => {},
   });
 };

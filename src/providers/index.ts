@@ -49,13 +49,11 @@ export const deleteOne = async ({
   return data;
 };
 
-// register
-export const register = async ({
+// auth: register || login
+export const auth = async ({
   resource = "register",
   values,
 }: ProviderProps) => {
-  const { data } = await axios.post(resource, values); // http://localhost:3000/register, values
+  const { data } = await axios.post(resource, values); // http://localhost:3000/login, values
   return data;
 };
-
-// login

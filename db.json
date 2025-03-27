@@ -35,5 +35,11 @@
     }
   ],
   "categories": [],
-  "users": []
+  "users": [
+    {
+      "email": "hoadv21@fpt.edu.vn",
+      "password": "$2a$10$vldMF0kR7oyk8yS/31LuietJWJ5ZXL5JGXupkXtzd1WPbA0fn6Yyy",
+      "id": 1
+    }
+  ]
 }

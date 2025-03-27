@@ -1,13 +1,13 @@
-import { Button, Form, Input, InputNumber, message } from "antd";
+import { Button, Form, Input, InputNumber } from "antd";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useOne, useUpdate } from "../../hooks";
 
 function ProductEdit() {
-  // get data product theo id
   const { id } = useParams();
   const [form] = Form.useForm();
 
+  // get data product theo id
   const { data: product } = useOne({ resource: "products", id });
 
   useEffect(() => {

@@ -1,7 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber, message } from "antd";
-import { useNavigate } from "react-router-dom";
-import { create } from "../../providers";
 import { useCreate } from "../../hooks";
 
 type ProductForm = {
@@ -10,8 +7,6 @@ type ProductForm = {
 };
 
 function ProductAdd() {
-  const nav = useNavigate();
-
   const { mutate } = useCreate({ resource: "products" });
 
   function onFinish(values: ProductForm) {

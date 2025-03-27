@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { create, deleteOne, getList, getOne, update } from "../providers";
+import { auth, create, deleteOne, getList, getOne, update } from "../providers";
 import { message } from "antd";
 
 type Props = {
@@ -49,6 +49,16 @@ export const useDelete = ({ resource = "products" }: Props) => {
       message.success("Xoa thanh cong");
       // cap nhat danh sach sau khi xoa
       queryClient.invalidateQueries({ queryKey: [resource] });
+    },
+    onError: () => {},
+  });
+};
+
+export const useAuth = ({ resource = "register" }: Props) => {
+  return useMutation({
+    mutationFn: (values: any) => auth({ resource, values }),
+    onSuccess: () => {
+      message.success("Them thanh cong");
     },
     onError: () => {},
   });

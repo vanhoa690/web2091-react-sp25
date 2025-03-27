@@ -9,7 +9,7 @@ export type Props = {
 };
 // getList
 export const getList = async ({ resource = "products" }) => {
-  const { data } = await axios.get(resource);
+  const { data } = await axios.get(resource); //"http://localhost:3000/products
   return data;
 };
 

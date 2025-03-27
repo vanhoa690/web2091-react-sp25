@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber } from "antd";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";

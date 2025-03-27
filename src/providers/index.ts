@@ -48,3 +48,14 @@ export const deleteOne = async ({
   const { data } = await axios.delete(`${resource}/${id}`);
   return data;
 };
+
+// register
+export const register = async ({
+  resource = "register",
+  values,
+}: ProviderProps) => {
+  const { data } = await axios.post(resource, values); // http://localhost:3000/register, values
+  return data;
+};
+
+// login

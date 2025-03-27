@@ -20,5 +20,22 @@
       "id": 1
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "hoadv21@fpt.edu.vn",
+      "password": "$2a$10$S/HSKMC8axUCFeK1fJt.zOt9YS/gYfgNHsmEQcsaP0ksfome2XAHy",
+      "confirmPassword": "123456",
+      "id": 1
+    },
+    {
+      "email": "hoadv212@fpt.edu.vn",
+      "password": "$2a$10$bV3.1oWyur8Sh25OwFJdn.lYvIyf0LB0VnwtJpokG/JC2UsxwrWf6",
+      "id": 2
+    },
+    {
+      "email": "hoadv21442@fpt.edu.vn",
+      "password": "$2a$10$XrCxu6EiZa7DUd0kuXTNGeJpBFvibpiUPsH6fTOa1aJNAAi8jy.CG",
+      "id": 3
+    }
+  ]
 }

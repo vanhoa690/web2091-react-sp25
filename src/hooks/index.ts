@@ -66,8 +66,11 @@ export const useDelete = ({ resource = "products" }: Props) => {
 export const useAuth = ({ resource = "register" }) => {
   return useMutation({
     mutationFn: (values) => auth({ resource, values }),
-    onSuccess: () => {
+    onSuccess: (data) => {
       message.success("thanh cong");
+      // register => chuyen sang /login
+      // login: luu token
+      console.log(data);
     },
   });
 };

@@ -66,10 +66,18 @@ export const useDelete = ({ resource = "products" }: Props) => {
 
 // useAuth
 export const useAuth = ({ resource = "register" }) => {
+  const nav = useNavigate();
   return useMutation({
     mutationFn: (values: any) => auth({ resource, values }),
-    onSuccess: () => {
-      message.success("them thanh cong");
+    onSuccess: (data) => {
+      message.success("thanh cong");
+      if (resource == "register") {
+        nav("/login");
+        return;
+      }
+      localStorage.setItem("token", data.accessToken);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      nav("/products");
     },
   });
 };

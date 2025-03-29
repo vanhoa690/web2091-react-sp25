@@ -18,20 +18,6 @@
       "name": "Trà sữa socola update",
       "price": 38000,
       "id": 3
-    },
-    {
-      "id": 4,
-      "name": "Trà đào cam sả",
-      "price": 45000,
-      "image": "https://trasuadodo.vn/wp-content/uploads/2022/09/kinh-doanh-tra-sua-online-01-min.png",
-      "desc": "Hương vị trà đào tươi mát, kết hợp cùng cam sả thơm lừng."
-    },
-    {
-      "id": 5,
-      "name": "Trà chanh mật ong",
-      "price": 30000,
-      "image": "https://trasuadodo.vn/wp-content/uploads/2022/09/kinh-doanh-tra-sua-online-01-min.png",
-      "desc": "Trà chanh thanh mát, hòa quyện cùng mật ong thiên nhiên."
     }
   ],
   "categories": [],

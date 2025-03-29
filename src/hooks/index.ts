@@ -57,8 +57,15 @@ export const useDelete = ({ resource = "products" }: Props) => {
 export const useAuth = ({ resource = "register" }: Props) => {
   return useMutation({
     mutationFn: (values: any) => auth({ resource, values }),
-    onSuccess: () => {
-      message.success("Them thanh cong");
+    onSuccess: (data) => {
+      message.success("thanh cong");
+      if (resource == "register") {
+        // code chuyen trang /login
+        return;
+      }
+      console.log(data);
+      localStorage.setItem("token", data.accessToken);
+      localStorage.setItem("user", JSON.stringify(data.user));
     },
     onError: () => {},
   });

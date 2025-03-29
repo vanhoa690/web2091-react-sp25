@@ -7,6 +7,7 @@ import "antd/dist/reset.css"; // Ant Design v5 reset styles
 import { Link } from "react-router-dom";
 import Register from "./pages/auth/register";
 import UserList from "./pages/user/list";
+import Login from "./pages/auth/login";
 
 const { Header } = Layout;
 
@@ -15,6 +16,10 @@ function App() {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
     },
     {
       path: "/user/list",
@@ -51,6 +56,9 @@ function App() {
           </Menu.Item>
           <Menu.Item key="5">
             <Link to="/user/list">User List</Link>
+          </Menu.Item>
+          <Menu.Item key="6">
+            <Link to="/login">Login</Link>
           </Menu.Item>
         </Menu>
       </Header>

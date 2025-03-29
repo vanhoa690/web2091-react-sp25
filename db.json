@@ -16,6 +16,11 @@
       "email": "hoadv212@fpt.edu.vn",
       "password": "$2a$10$2JfK2c0BWB97pFUArVB1PO5MhTFbiw7MyUFQ3lZk9JoFS1Xeb0Yq2",
       "id": 2
+    },
+    {
+      "email": "2@gmail.com",
+      "password": "$2a$10$eiFT6XoRw9pbkCvslHW7SO80G0BCH2cgFasvj78tMf/NNA.uv6TTO",
+      "id": 3
     }
   ]
 }

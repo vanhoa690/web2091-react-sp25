@@ -64,12 +64,14 @@ export const useDelete = ({ resource = "products" }: Props) => {
 };
 
 export const useAuth = ({ resource = "register" }) => {
+  const nav = useNavigate();
+
   return useMutation({
     mutationFn: (values) => auth({ resource, values }),
     onSuccess: (data) => {
       message.success("thanh cong");
       if (resource == "register") {
-        // register => chuyen sang /login
+        nav("/login");
         return;
       }
       console.log(data);
@@ -77,6 +79,7 @@ export const useAuth = ({ resource = "register" }) => {
       localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
       // chuyen sang trang admin
+      nav("/products");
     },
   });
 };

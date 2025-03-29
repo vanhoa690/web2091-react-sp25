@@ -68,9 +68,15 @@ export const useAuth = ({ resource = "register" }) => {
     mutationFn: (values) => auth({ resource, values }),
     onSuccess: (data) => {
       message.success("thanh cong");
-      // register => chuyen sang /login
-      // login: luu token
+      if (resource == "register") {
+        // register => chuyen sang /login
+        return;
+      }
       console.log(data);
+      // login: luu token
+      localStorage.setItem("token", data.accessToken);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      // chuyen sang trang admin
     },
   });
 };

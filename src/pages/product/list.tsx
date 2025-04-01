@@ -36,7 +36,7 @@ function ProductList() {
         return (
           <Space>
             <Button type="primary">
-              <Link to={`/product/${product.id}/edit`}>Edit</Link>
+              <Link to={`/admin/product/${product.id}/edit`}>Edit</Link>
             </Button>
             <Button type="primary" onClick={() => mutate(product.id)}>
               Delete

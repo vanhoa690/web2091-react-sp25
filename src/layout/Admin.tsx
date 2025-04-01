@@ -30,8 +30,11 @@ const AdminLayout = () => {
           <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
             <Link to="/admin/dashboard">Dashboard</Link>
           </Menu.Item>
-          <Menu.Item key="users" icon={<UserOutlined />}>
+          <Menu.Item key="products" icon={<UserOutlined />}>
             <Link to="/admin/products">Products</Link>
+          </Menu.Item>
+          <Menu.Item key="product-add" icon={<UserOutlined />}>
+            <Link to="/admin/product/add">Add Products</Link>
           </Menu.Item>
           <Menu.Item key="users" icon={<UserOutlined />}>
             <Link to="/admin/users">Users</Link>

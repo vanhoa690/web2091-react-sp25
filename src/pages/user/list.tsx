@@ -14,6 +14,10 @@ function UserList() {
       dataIndex: "email",
       key: "email",
     },
+    {
+      title: "Role",
+      dataIndex: "role",
+    },
   ];
 
   return <Table dataSource={data} columns={columns} loading={isLoading} />;

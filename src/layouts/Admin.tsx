@@ -10,6 +10,13 @@ import {
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
+  // lay user tu localstorage
+  // check user role == admin ?
+  // KO dap ung dc: chuyen huong sang login
+  const logout = () => {
+    // removeItem user trong  localstorage
+    // huyen huong sang login
+  };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
@@ -42,7 +49,12 @@ const AdminLayout = () => {
           <Menu.Item key="orders" icon={<ShoppingCartOutlined />}>
             <Link to="/admin/orders">Orders</Link>
           </Menu.Item>
-          <Menu.Item key="logout" icon={<LogoutOutlined />} danger>
+          <Menu.Item
+            key="logout"
+            icon={<LogoutOutlined />}
+            danger
+            onClick={logout}
+          >
             Logout
           </Menu.Item>
         </Menu>

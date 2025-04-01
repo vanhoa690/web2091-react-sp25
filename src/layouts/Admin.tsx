@@ -28,7 +28,7 @@ const AdminLayout = () => {
         </div>
         <Menu theme="dark" mode="inline">
           <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-            <Link to="/admin/dashboard">Dashboard</Link>
+            <Link to="/">Home</Link>
           </Menu.Item>
           <Menu.Item key="products" icon={<UserOutlined />}>
             <Link to="/admin/products">Products</Link>

@@ -38,7 +38,7 @@ function ProductList() {
         return (
           <Space>
             <Button type="primary">
-              <Link to={`/product/${product.id}/edit`}>Edit</Link>
+              <Link to={`/admin/product/${product.id}/edit`}>Edit</Link>
             </Button>
             <Popconfirm
               title="Delete the task"

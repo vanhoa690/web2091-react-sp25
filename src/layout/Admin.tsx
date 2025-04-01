@@ -10,6 +10,13 @@ import {
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
+  // bao ve route admin
+  // user trong localstorage
+  // check user va check user role
+  const logout = () => {
+    // remove localstorage user
+    // chuyen sang trang login
+  };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
@@ -28,7 +35,7 @@ const AdminLayout = () => {
         </div>
         <Menu theme="dark" mode="inline">
           <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-            <Link to="/admin/dashboard">Dashboard</Link>
+            <Link to="/">Dashboard</Link>
           </Menu.Item>
           <Menu.Item key="products" icon={<UserOutlined />}>
             <Link to="/admin/products">Products</Link>
@@ -42,7 +49,12 @@ const AdminLayout = () => {
           <Menu.Item key="orders" icon={<ShoppingCartOutlined />}>
             <Link to="/admin/orders">Orders</Link>
           </Menu.Item>
-          <Menu.Item key="logout" icon={<LogoutOutlined />} danger>
+          <Menu.Item
+            key="logout"
+            icon={<LogoutOutlined />}
+            danger
+            onClick={logout}
+          >
             Logout
           </Menu.Item>
         </Menu>

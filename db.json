@@ -10,7 +10,8 @@
     {
       "email": "hoadv21@fpt.edu.vn",
       "password": "$2a$10$ITAD6BzMtKVFBywP1tDMDeCKSSAkN0guErkGIfnVT9sRhrQ2bq2rW",
-      "id": 1
+      "id": 1,
+      "role": "admin"
     },
     {
       "email": "hoadv212@fpt.edu.vn",

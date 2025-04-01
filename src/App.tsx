@@ -9,6 +9,7 @@ import Register from "./pages/auth/register";
 import UserList from "./pages/user/list";
 import Login from "./pages/auth/login";
 import AdminLayout from "./layout/Admin";
+import ClientLayout from "./layout/Client";
 
 const { Header } = Layout;
 
@@ -37,42 +38,21 @@ function App() {
       ],
     },
     {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "/users",
-      element: <UserList />,
+      path: "",
+      element: <ClientLayout />,
+      children: [
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+      ],
     },
   ]);
-  return (
-    <main>{element}</main>
-    // <Layout style={{ minHeight: "100vh" }}>
-    //   <Header>
-    //     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-    //       <Menu.Item key="1">
-    //         <Link to="/">React Antd</Link>
-    //       </Menu.Item>
-    //       <Menu.Item key="2">
-    //         <Link to="/products">Products</Link>
-    //       </Menu.Item>
-    //       <Menu.Item key="3">
-    //         <Link to="/product/add">Add Product</Link>
-    //       </Menu.Item>
-    //       <Menu.Item key="4">
-    //         <Link to="/register">Register</Link>
-    //       </Menu.Item>
-    //       <Menu.Item key="5">
-    //         <Link to="/users">User List</Link>
-    //       </Menu.Item>
-    //       <Menu.Item key="6">
-    //         <Link to="/login">Login</Link>
-    //       </Menu.Item>
-    //     </Menu>
-    //   </Header>
-
-    // </Layout>
-  );
+  return <main>{element}</main>;
 }
 
 export default App;

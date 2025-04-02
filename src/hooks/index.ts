@@ -44,10 +44,12 @@ export const useCreate = ({ resource = "products" }) => {
 // useUpdate: updateData
 export const useUpdate = ({ resource = "products", id }: Props) => {
   const nav = useNavigate();
+
   return useMutation({
     mutationFn: (values: any) => update({ resource, id, values }),
-    onSuccess: () => {
+    onSuccess: (data) => {
       message.success("update thanh cong");
+      console.log({ data });
       // chuyen sang trang list: /products
       nav(`/${resource}`);
     },
@@ -69,6 +71,7 @@ export const useDelete = ({ resource = "products" }: Props) => {
 export const useAuth = ({ resource = "register" }) => {
   const nav = useNavigate();
   const { setUser } = useUser();
+  // logout();
   return useMutation({
     mutationFn: (values: any) => auth({ resource, values }),
     onSuccess: (data) => {

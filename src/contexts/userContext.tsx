@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "./carContext";
 
 type User = {
   id: number;
@@ -15,6 +16,7 @@ type User = {
 
 type UserContextType = {
   user: User | null;
+  loading: boolean;
   setUser: (user: User | null) => void;
   logout: () => void;
 };
@@ -33,11 +35,16 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
   const nav = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
-    setUser(user);
+    if (user) {
+      setUser(user);
+    }
+    setLoading(false);
   }, []);
 
   // Hàm xử lý logout
@@ -48,7 +55,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     nav("/login");
   };
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
+    <UserContext.Provider value={{ user, loading, setUser, logout }}>
       {children}
     </UserContext.Provider>
   );

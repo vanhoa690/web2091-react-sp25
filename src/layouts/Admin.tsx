@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, message } from "antd";
 import { Outlet, Link, Navigate } from "react-router-dom";
 import {
   DashboardOutlined,
@@ -11,9 +11,12 @@ import { useUser } from "../contexts/userContext";
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  const { user, logout } = useUser();
+  const { user, loading, logout } = useUser();
+
+  if (loading) return <div>Loading...</div>;
 
   if (!user || user.role !== "admin") {
+    message.error("Ban ko phai Admin");
     return <Navigate to="/login" replace />;
   }
 
@@ -65,7 +68,7 @@ const AdminLayout = () => {
         <Header
           style={{ background: "#fff", padding: "0 20px", textAlign: "right" }}
         >
-          <span>Admin: {user.email}</span>
+          <span>Admin: {user?.email}</span>
         </Header>
         <Content style={{ margin: "16px", padding: 24, background: "#fff" }}>
           <Outlet /> {/* Render nội dung trang con */}

@@ -1,7 +1,18 @@
 import { Button, Form, Input } from "antd";
 import { useAuth } from "../../hooks";
+import { useUser } from "../../contexts/userContext";
+import { Navigate } from "react-router-dom";
 
 function Login() {
+  const { user } = useUser();
+
+  if (user) {
+    return user.role == "admin" ? (
+      <Navigate to="/admin" replace />
+    ) : (
+      <Navigate to="/" replace />
+    );
+  }
   const { mutate } = useAuth({ resource: "login" });
   const onFinish = (values: any) => {
     mutate(values);

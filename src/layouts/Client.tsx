@@ -2,11 +2,14 @@ import { Layout, Menu, Avatar, Badge, Dropdown } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, Outlet } from "react-router-dom";
 import { useUser } from "../contexts/userContext";
+import { useCart } from "../contexts/carContext";
 
 const { Header, Content } = Layout;
 
 const ClientLayout = () => {
   const { user, logout } = useUser();
+  const { cart } = useCart();
+
   const userMenu = (
     <Menu>
       <Menu.Item key="profile">
@@ -31,13 +34,13 @@ const ClientLayout = () => {
             <Link to="/">Home</Link>
           </Menu.Item>
           <Menu.Item key="shop">
-            <Link to="/shop">Shop</Link>
+            <Link to="/admin">Admin</Link>
           </Menu.Item>
         </Menu>
 
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           {/* Giỏ hàng */}
-          <Badge count={1}>
+          <Badge count={cart?.quantity || 0}>
             <ShoppingCartOutlined
               style={{ fontSize: "24px", color: "white" }}
             />

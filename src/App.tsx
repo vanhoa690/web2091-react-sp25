@@ -1,25 +1,54 @@
 import { useRoutes } from "react-router";
-import "./App.css";
 import ProductList from "./pages/product/list";
 import ProductAdd from "./pages/product/add";
 import ProductEdit from "./pages/product/edit";
+import "antd/dist/reset.css"; // Ant Design v5 reset styles
+import Register from "./pages/auth/register";
+import UserList from "./pages/user/list";
+import Login from "./pages/auth/login";
+import AdminLayout from "./layouts/Admin";
+import ClientLayout from "./layouts/Client";
 
 function App() {
   const element = useRoutes([
     {
-      path: "/product/list",
-      element: <ProductList />,
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        {
+          path: "users", // /admin/users
+          element: <UserList />,
+        },
+        {
+          path: "products",
+          element: <ProductList />,
+        },
+        {
+          path: "product/add",
+          element: <ProductAdd />,
+        },
+        {
+          path: "product/:id/edit",
+          element: <ProductEdit />,
+        },
+      ],
     },
     {
-      path: "/product/add",
-      element: <ProductAdd />,
-    },
-    {
-      path: "/product/:id/edit",
-      element: <ProductEdit />,
+      path: "",
+      element: <ClientLayout />,
+      children: [
+        {
+          path: "register",
+          element: <Register />,
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+      ],
     },
   ]);
-  return <div>{element}</div>;
+  return <main>{element}</main>;
 }
 
 export default App;

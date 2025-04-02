@@ -1,5 +1,5 @@
 import { Layout, Menu } from "antd";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, Navigate, useNavigate } from "react-router-dom";
 import {
   DashboardOutlined,
   UserOutlined,
@@ -10,14 +10,16 @@ import {
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  // bao ve router admin
-  // check user tu localStorage
-  // check role user == admin
-  // KO dap ung: chuyen sang /login
-  // dap ung: di tiep
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  if (!user || user.role !== "admin") {
+    return <Navigate to="/login" replace />;
+  }
+
+  const nav = useNavigate();
   const logout = () => {
-    // remove user tu localStorage
-    //chuyen sang /login
+    localStorage.removeItem("user");
+    nav("/login");
   };
   return (
     <Layout style={{ minHeight: "100vh" }}>

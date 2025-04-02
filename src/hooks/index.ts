@@ -77,7 +77,7 @@ export const useAuth = ({ resource = "register" }) => {
       }
       localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
-      nav("/products");
+      nav("/admin");
     },
   });
 };

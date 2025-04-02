@@ -1,29 +1,79 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Avatar, Badge, Dropdown } from "antd";
+import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, Outlet } from "react-router-dom";
-const { Header } = Layout;
+import { useUser } from "../contexts/userContext";
+
+const { Header, Content } = Layout;
 
 const ClientLayout = () => {
+  const { user, logout } = useUser();
+  const userMenu = (
+    <Menu>
+      <Menu.Item key="profile">
+        <Link to="/profile">Profile</Link>
+      </Menu.Item>
+      <Menu.Item key="logout" onClick={logout}>
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Header>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1">
-            <Link to="/">React Antd</Link>
+      <Header
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Menu theme="dark" mode="horizontal" style={{ flex: 1 }}>
+          <Menu.Item key="home">
+            <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item key="2">
-            <Link to="/admin">Admin</Link>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Link to="/register">Register</Link>
-          </Menu.Item>
-          <Menu.Item key="6">
-            <Link to="/login">Login</Link>
+          <Menu.Item key="shop">
+            <Link to="/shop">Shop</Link>
           </Menu.Item>
         </Menu>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          {/* Giỏ hàng */}
+          <Badge count={1}>
+            <ShoppingCartOutlined
+              style={{ fontSize: "24px", color: "white" }}
+            />
+          </Badge>
+
+          {/* Người dùng */}
+          {user ? (
+            <Dropdown overlay={userMenu} trigger={["click"]}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+              >
+                <Avatar icon={<UserOutlined />} />
+                <span style={{ marginLeft: "8px", color: "white" }}>
+                  {user?.email || "Guest"}
+                </span>
+              </div>
+            </Dropdown>
+          ) : (
+            <div style={{ display: "flex", gap: "10px" }}>
+              <Link to="/login" style={{ color: "white" }}>
+                Login
+              </Link>
+              <Link to="/register" style={{ color: "white" }}>
+                Register
+              </Link>
+            </div>
+          )}
+        </div>
       </Header>
-      <main style={{ padding: "0 100px" }}>
+      <Content style={{ padding: "20px 50px" }}>
         <Outlet />
-      </main>
+      </Content>
     </Layout>
   );
 };

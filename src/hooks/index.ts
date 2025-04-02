@@ -80,7 +80,10 @@ export const useAuth = ({ resource = "register" }) => {
       localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
       setUser(data.user);
-      nav("/admin");
+      data.user.role == "admin" ? nav("/admin") : nav("/");
+    },
+    onError: () => {
+      message.error("error");
     },
   });
 };

@@ -1,26 +1,22 @@
 import { Layout, Menu } from "antd";
-import { Outlet, Link, Navigate, useNavigate } from "react-router-dom";
+import { Outlet, Link, Navigate } from "react-router-dom";
 import {
   DashboardOutlined,
   UserOutlined,
   ShoppingCartOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
+import { useUser } from "../contexts/userContext";
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const { user, logout } = useUser();
 
   if (!user || user.role !== "admin") {
     return <Navigate to="/login" replace />;
   }
 
-  const nav = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("user");
-    nav("/login");
-  };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
@@ -69,7 +65,7 @@ const AdminLayout = () => {
         <Header
           style={{ background: "#fff", padding: "0 20px", textAlign: "right" }}
         >
-          <span>Admin Dashboard</span>
+          <span>Admin: {user.email}</span>
         </Header>
         <Content style={{ margin: "16px", padding: 24, background: "#fff" }}>
           <Outlet /> {/* Render nội dung trang con */}

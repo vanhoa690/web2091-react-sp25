@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { createContext, ReactNode, useContext, useState } from "react";
 type User = {
   id: number;
@@ -21,6 +22,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = () => {
+    message.success("logout thanh cong");
     setUser(null);
   };
   return (

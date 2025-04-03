@@ -11,14 +11,10 @@ import { useUser } from "../contexts/userContext";
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  const { user } = useUser();
+  const { logout, user } = useUser();
   // lay user tu localstorage
   // check user role == admin ?
   // KO dap ung dc: chuyen huong sang login
-  const logout = () => {
-    // removeItem user trong  localstorage
-    // huyen huong sang login
-  };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}

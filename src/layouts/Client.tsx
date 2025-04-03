@@ -1,11 +1,11 @@
 import { Layout, Menu } from "antd";
 import { Link, Outlet } from "react-router-dom";
-import { UserContext } from "../contexts/userContext";
-import { useContext } from "react";
+import { useUser } from "../contexts/userContext";
 const { Header } = Layout;
 
 const ClientLayout = () => {
-  const { user } = useContext(UserContext); // lay du lieu trong context
+  const { user } = useUser(); // lay du lieu trong context
+  console.log(user);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>

@@ -6,13 +6,12 @@ import {
   ShoppingCartOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { useContext } from "react";
-import { UserContext } from "../contexts/userContext";
+import { useUser } from "../contexts/userContext";
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  const { user } = useContext(UserContext); // lay du lieu trong context
+  const { user, logout } = useUser(); // lay du lieu trong context
 
   // const user = JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -61,7 +60,7 @@ const AdminLayout = () => {
             key="logout"
             icon={<LogoutOutlined />}
             danger
-            // onClick={logout}
+            onClick={logout}
           >
             Logout
           </Menu.Item>

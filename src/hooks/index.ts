@@ -11,6 +11,7 @@ import {
 } from "../providers";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/userContext";
 
 export const useList = ({ resource = "products" }) => {
   return useQuery({
@@ -66,6 +67,7 @@ export const useDelete = ({ resource = "products" }: Props) => {
 
 // useAuth
 export const useAuth = ({ resource = "register" }) => {
+  const { login } = useUser();
   const nav = useNavigate();
   return useMutation({
     mutationFn: (values: any) => auth({ resource, values }),
@@ -77,7 +79,8 @@ export const useAuth = ({ resource = "register" }) => {
       }
       localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
-      nav("/admin");
+      login(data.user);
+      // nav("/admin");
     },
   });
 };

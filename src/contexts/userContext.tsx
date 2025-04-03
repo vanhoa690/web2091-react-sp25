@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+
 type User = {
   id: number;
   email: string;
@@ -17,6 +24,12 @@ export const UserContext = createContext<UserContextType | null>(null);
 // B2: Provider
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  // state loading
+  // useEffect: localStorage
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    setUser(user);
+  }, []);
 
   const login = (user: User) => {
     setUser(user);

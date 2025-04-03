@@ -12,12 +12,13 @@ const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
   const { user, logout } = useUser(); // lay du lieu trong context
+  console.log(user);
 
   // const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-  // if (!user || user.role !== "admin") {
-  //   return <Navigate to="/login" replace />;
-  // }
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   // const nav = useNavigate();
   // const logout = () => {

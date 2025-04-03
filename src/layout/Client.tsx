@@ -1,13 +1,12 @@
 import { Layout, Menu } from "antd";
 import { Outlet, Link } from "react-router-dom";
-import { UserContext } from "../contexts/userContext";
-import { useContext } from "react";
+import { useUser } from "../contexts/userContext";
 
 const { Header, Content } = Layout;
 
 const ClientLayout = () => {
   // lay user tu context
-  const user = useContext(UserContext);
+  const { user } = useUser();
   console.log(user);
 
   return (
@@ -25,11 +24,14 @@ const ClientLayout = () => {
             <Menu.Item key="6">
               <Link to="/login">Login</Link>
             </Menu.Item>
-            <Menu.Item key="6">{user?.name}</Menu.Item>
+            <Menu.Item key="6">
+              <Link to="/admin">Admin</Link>
+            </Menu.Item>
+            <Menu.Item key="6">{user?.email}</Menu.Item>
           </Menu>
         </Header>
         <Content style={{ margin: "16px", padding: 24, background: "#fff" }}>
-          Username: {user?.name}
+          Email: {user?.email}
           <Outlet /> {/* Render nội dung trang con */}
         </Content>
       </Layout>

@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { auth, create, deleteOne, getList, getOne, update } from "../providers";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/userContext";
 
 type Props = {
   resource: string;
@@ -65,7 +66,7 @@ export const useDelete = ({ resource = "products" }: Props) => {
 
 export const useAuth = ({ resource = "register" }) => {
   const nav = useNavigate();
-
+  const { login } = useUser();
   return useMutation({
     mutationFn: (values) => auth({ resource, values }),
     onSuccess: (data) => {
@@ -78,8 +79,9 @@ export const useAuth = ({ resource = "register" }) => {
       // login: luu token
       localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
+      login(data.user);
       // chuyen sang trang admin
-      nav("/products");
+      // nav("/products");
     },
   });
 };

@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { createContext, useContext, useState } from "react";
 
 type User = {
@@ -22,6 +23,7 @@ export const UserProvider = ({ children }: { children: any }) => {
   };
 
   const logout = () => {
+    message.success("Logout");
     setUser(null);
   };
   return (

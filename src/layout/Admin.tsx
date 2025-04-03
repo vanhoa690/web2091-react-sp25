@@ -6,17 +6,19 @@ import {
   ShoppingCartOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
+import { useUser } from "../contexts/userContext";
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
+  const { logout } = useUser();
   // bao ve route admin
   // user trong localstorage
   // check user va check user role
-  const logout = () => {
-    // remove localstorage user
-    // chuyen sang trang login
-  };
+  // const logout = () => {
+  //   // remove localstorage user
+  //   // chuyen sang trang login
+  // };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}

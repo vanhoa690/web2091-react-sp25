@@ -6,21 +6,25 @@ import {
   ShoppingCartOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const { user } = useContext(UserContext); // lay du lieu trong context
 
-  if (!user || user.role !== "admin") {
-    return <Navigate to="/login" replace />;
-  }
+  // const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-  const nav = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("user");
-    nav("/login");
-  };
+  // if (!user || user.role !== "admin") {
+  //   return <Navigate to="/login" replace />;
+  // }
+
+  // const nav = useNavigate();
+  // const logout = () => {
+  //   localStorage.removeItem("user");
+  //   nav("/login");
+  // };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
@@ -57,7 +61,7 @@ const AdminLayout = () => {
             key="logout"
             icon={<LogoutOutlined />}
             danger
-            onClick={logout}
+            // onClick={logout}
           >
             Logout
           </Menu.Item>
@@ -69,7 +73,7 @@ const AdminLayout = () => {
         <Header
           style={{ background: "#fff", padding: "0 20px", textAlign: "right" }}
         >
-          <span>Admin Dashboard</span>
+          <span>Admin Dashboard {user?.email}</span>
         </Header>
         <Content style={{ margin: "16px", padding: 24, background: "#fff" }}>
           <Outlet /> {/* Render nội dung trang con */}

@@ -1,8 +1,14 @@
 import { Layout, Menu } from "antd";
 import { Header } from "antd/es/layout/layout";
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { UserContext } from "../contexts/userContext";
 
 const ClientLayout = () => {
+  const context = useContext(UserContext);
+  const { user } = context;
+  console.log(user);
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>
@@ -21,6 +27,7 @@ const ClientLayout = () => {
           </Menu.Item>
         </Menu>
       </Header>
+      Email User: {user?.email}
       <Outlet />
     </Layout>
   );

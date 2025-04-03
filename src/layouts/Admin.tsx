@@ -6,10 +6,12 @@ import {
   ShoppingCartOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
+import { useUser } from "../contexts/userContext";
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
+  const { user } = useUser();
   // lay user tu localstorage
   // check user role == admin ?
   // KO dap ung dc: chuyen huong sang login
@@ -65,7 +67,7 @@ const AdminLayout = () => {
         <Header
           style={{ background: "#fff", padding: "0 20px", textAlign: "right" }}
         >
-          <span>Admin Dashboard</span>
+          <span>Admin Dashboard {user?.email}</span>
         </Header>
         <Content style={{ margin: "16px", padding: 24, background: "#fff" }}>
           <Outlet /> {/* Render nội dung trang con */}

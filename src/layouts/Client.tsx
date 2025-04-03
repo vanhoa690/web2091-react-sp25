@@ -1,12 +1,10 @@
 import { Layout, Menu } from "antd";
 import { Header } from "antd/es/layout/layout";
-import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { UserContext } from "../contexts/userContext";
+import { useUser } from "../contexts/userContext";
 
 const ClientLayout = () => {
-  const context = useContext(UserContext);
-  const { user } = context;
+  const { user } = useUser();
   console.log(user);
 
   return (

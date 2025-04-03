@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 type User = {
   id: number;
   email: string;
@@ -28,4 +28,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </UserContext.Provider>
   );
+};
+
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context;
 };

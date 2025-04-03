@@ -1,5 +1,5 @@
 import { Layout, Menu } from "antd";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, Navigate } from "react-router-dom";
 import {
   DashboardOutlined,
   UserOutlined,
@@ -12,6 +12,11 @@ const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
   const { logout, user } = useUser();
+  console.log(user);
+
+  if (!user) {
+    return <Navigate to={"/login"} />;
+  }
   // lay user tu localstorage
   // check user role == admin ?
   // KO dap ung dc: chuyen huong sang login

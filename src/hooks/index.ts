@@ -81,7 +81,7 @@ export const useAuth = ({ resource = "register" }) => {
       localStorage.setItem("user", JSON.stringify(data.user));
       login(data.user);
       // chuyen sang trang admin
-      // nav("/products");
+      nav("/admin");
     },
   });
 };

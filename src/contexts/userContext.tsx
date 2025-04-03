@@ -1,5 +1,5 @@
 import { message } from "antd";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type User = {
   id: number;
@@ -17,6 +17,11 @@ export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: any }) => {
   const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    setUser(user);
+  }, []);
 
   const login = (user: User) => {
     setUser(user);

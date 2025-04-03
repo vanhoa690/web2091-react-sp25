@@ -1,5 +1,5 @@
 import { Layout, Menu } from "antd";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, Navigate } from "react-router-dom";
 import {
   DashboardOutlined,
   UserOutlined,
@@ -11,7 +11,11 @@ import { useUser } from "../contexts/userContext";
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  const { logout } = useUser();
+  const { user, logout } = useUser();
+  console.log(user);
+  if (!user) {
+    return <Navigate to={"/login"} />;
+  }
   // bao ve route admin
   // user trong localstorage
   // check user va check user role

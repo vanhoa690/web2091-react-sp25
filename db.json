@@ -19,23 +19,25 @@
   "carts": [
     {
       "userId": 1,
-      "quantity": 57,
+      "products": [
+        {
+          "id": 2,
+          "name": "San pham A",
+          "price": 32,
+          "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
+          "desc": "mo ta",
+          "quantity": 1
+        },
+        {
+          "id": 1,
+          "name": "San pham A",
+          "price": 32,
+          "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
+          "desc": "mo ta",
+          "quantity": 1
+        }
+      ],
       "id": 1
-    },
-    {
-      "id": 2,
-      "userId": 2,
-      "quantity": 0
-    },
-    {
-      "id": 3,
-      "userId": 23,
-      "quantity": 0
-    },
-    {
-      "userId": 4,
-      "quantity": 37,
-      "id": 4
     }
   ],
   "users": [

@@ -2,13 +2,23 @@ import { Layout, Menu, Avatar, Badge, Dropdown } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, Outlet } from "react-router-dom";
 import { useUser } from "../contexts/userContext";
-import { useCart } from "../contexts/carContext";
+import { useCart } from "../contexts/cart";
+import { useMemo } from "react";
 
 const { Header, Content } = Layout;
 
 const ClientLayout = () => {
   const { user, logout } = useUser();
-  const { cart } = useCart();
+  const {
+    state: { cart },
+  } = useCart();
+  const cartCount = useMemo(
+    () =>
+      cart?.products?.reduce((total, product) => {
+        return total + product.quantity;
+      }, 0) || 0,
+    [cart]
+  );
 
   const userMenu = (
     <Menu>
@@ -40,7 +50,7 @@ const ClientLayout = () => {
 
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           {/* Giỏ hàng */}
-          <Badge count={cart?.quantity || 0}>
+          <Badge count={cartCount}>
             <ShoppingCartOutlined
               style={{ fontSize: "24px", color: "white" }}
             />

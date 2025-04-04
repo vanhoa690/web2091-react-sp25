@@ -1,6 +1,6 @@
 import { Button, Card, Col, Row } from "antd";
 import { useList } from "../../hooks";
-import { useCart } from "../../contexts/carContext";
+import { useCart } from "../../contexts/cart";
 const { Meta } = Card;
 
 function Homepage() {
@@ -8,7 +8,6 @@ function Homepage() {
     resource: "products",
   });
   const { addToCart } = useCart();
-
   return (
     <Row gutter={[16, 16]}>
       {products?.map((product: any) => (
@@ -18,7 +17,7 @@ function Homepage() {
             cover={<img alt={product.name} src={product.image} />}
           >
             <Meta title={product.name} description={product.price} />
-            <Button onClick={addToCart}>Add To Cart</Button>
+            <Button onClick={() => addToCart(product)}>Add To Cart</Button>
           </Card>
         </Col>
       ))}

@@ -5,7 +5,7 @@ const { Header } = Layout;
 
 const ClientLayout = () => {
   const { user } = useUser(); // lay du lieu trong context
-  console.log(user);
+  // console.log(user);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -26,7 +26,7 @@ const ClientLayout = () => {
         </Menu>
       </Header>
       <main style={{ padding: "0 100px" }}>
-        Email User: {user?.email}
+        {/* Email User: {user?.email} */}
         <Outlet />
       </main>
     </Layout>

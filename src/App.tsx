@@ -10,6 +10,7 @@ import UserList from "./pages/user/list";
 import Login from "./pages/auth/login";
 import AdminLayout from "./layout/Admin";
 import ClientLayout from "./layout/Client";
+import { Homepage } from "./pages/homepage";
 
 const { Header } = Layout;
 
@@ -41,6 +42,10 @@ function App() {
       path: "",
       element: <ClientLayout />,
       children: [
+        {
+          path: "",
+          element: <Homepage />,
+        },
         {
           path: "login",
           element: <Login />,

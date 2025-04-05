@@ -8,13 +8,13 @@ import { UserProvider } from "./contexts/userContext.tsx";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <UserProvider>
-          <App />
-        </UserProvider>
-      </QueryClientProvider>
-    </BrowserRouter>
-  </StrictMode>
+  // <StrictMode>
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </QueryClientProvider>
+  </BrowserRouter>
+  // </StrictMode>
 );

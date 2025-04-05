@@ -7,7 +7,7 @@ const { Header, Content } = Layout;
 const ClientLayout = () => {
   // lay user tu context
   const { user } = useUser();
-  console.log(user);
+  // console.log(user);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -31,7 +31,7 @@ const ClientLayout = () => {
           </Menu>
         </Header>
         <Content style={{ margin: "16px", padding: 24, background: "#fff" }}>
-          Email: {user?.email}
+          {/* Email: {user?.email} */}
           <Outlet /> {/* Render nội dung trang con */}
         </Content>
       </Layout>

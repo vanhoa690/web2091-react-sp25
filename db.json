@@ -18,6 +18,21 @@
       "name": "Trà sữa socola update",
       "price": 38000,
       "id": 3
+    },
+    {
+      "name": "hoadv",
+      "price": 1,
+      "id": 4
+    },
+    {
+      "name": "1",
+      "price": 1,
+      "id": 5
+    },
+    {
+      "name": "1",
+      "price": 1,
+      "id": 6
     }
   ],
   "categories": [],

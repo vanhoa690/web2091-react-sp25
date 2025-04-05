@@ -5,7 +5,7 @@ import { useUser } from "../contexts/userContext";
 
 const ClientLayout = () => {
   const { user } = useUser();
-  console.log(user);
+  // console.log(user);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -25,7 +25,7 @@ const ClientLayout = () => {
           </Menu.Item>
         </Menu>
       </Header>
-      Email User: {user?.email}
+      {/*Email User: {user?.email} */}
       <Outlet />
     </Layout>
   );

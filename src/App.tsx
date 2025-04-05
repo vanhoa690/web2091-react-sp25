@@ -8,6 +8,7 @@ import UserList from "./pages/user/list";
 import Login from "./pages/auth/login";
 import AdminLayout from "./layouts/Admin";
 import ClientLayout from "./layouts/Client";
+import { Homepage } from "./pages/Homepage";
 
 function App() {
   const element = useRoutes([
@@ -41,6 +42,10 @@ function App() {
       path: "",
       element: <ClientLayout />, // /home /shop /carts/ orders
       children: [
+        {
+          path: "/",
+          element: <Homepage />,
+        },
         {
           path: "register",
           element: <Register />,

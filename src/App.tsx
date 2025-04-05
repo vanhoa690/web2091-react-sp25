@@ -2,7 +2,7 @@ import { Layout, Menu } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { Link, useRoutes } from "react-router-dom";
 import "antd/dist/reset.css";
-import { List } from "./pages/List";
+import List from "./pages/List";
 
 function App() {
   const element = useRoutes([
@@ -11,6 +11,7 @@ function App() {
       element: <List />,
     },
   ]);
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>

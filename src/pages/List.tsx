@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Table, Image } from "antd";
 import axios from "axios";
 
-export function List() {
+export default function List() {
   const { data: dataSource } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {

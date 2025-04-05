@@ -1,27 +1,21 @@
 {
   "products": [
     {
-      "name": "123c update",
-      "price": 123,
-      "id": 1
+      "id": 1,
+      "name": "San pham A",
+      "price": 5000000,
+      "imageUrl": "https://thacoauto.vn/storage/bmw-z4.jpg",
+      "description": "BMW là thương hiệu xe hơi hạng sang của Đức, nổi tiếng với thiết kế sang trọng, hiệu suất mạnh mẽ và công nghệ tiên tiến. Xe BMW mang lại trải nghiệm lái thể thao, đẳng cấp và đầy cảm xúc.",
+      "category": "BMW"
+    },
+    {
+      "id": 2,
+      "name": "San pham B",
+      "price": 3200000,
+      "imageUrl": "https://hoangvietauto.vn/wp-content/uploads/xe-audi-q8.jpg",
+      "description": "Audi là thương hiệu xe sang của Đức, nổi bật với thiết kế hiện đại, công nghệ tiên tiến và hệ dẫn động quattro trứ danh. Xe Audi mang đến trải nghiệm lái êm ái, mạnh mẽ và đầy phong cách.",
+      "category": "Audi"
     }
   ],
-  "users": [
-    {
-      "email": "hoadv21@fpt.edu.vn",
-      "password": "$2a$10$ITAD6BzMtKVFBywP1tDMDeCKSSAkN0guErkGIfnVT9sRhrQ2bq2rW",
-      "id": 1,
-      "role": "admin"
-    },
-    {
-      "email": "hoadv212@fpt.edu.vn",
-      "password": "$2a$10$2JfK2c0BWB97pFUArVB1PO5MhTFbiw7MyUFQ3lZk9JoFS1Xeb0Yq2",
-      "id": 2
-    },
-    {
-      "email": "2@gmail.com",
-      "password": "$2a$10$eiFT6XoRw9pbkCvslHW7SO80G0BCH2cgFasvj78tMf/NNA.uv6TTO",
-      "id": 3
-    }
-  ]
+  "users": []
 }

@@ -11,7 +11,6 @@ function App() {
       element: <List />,
     },
   ]);
-
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>

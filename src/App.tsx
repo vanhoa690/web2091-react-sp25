@@ -1,9 +1,16 @@
 import { Layout, Menu } from "antd";
 import { Header } from "antd/es/layout/layout";
-import { Link } from "react-router-dom";
+import { Link, useRoutes } from "react-router-dom";
 import "antd/dist/reset.css";
+import { List } from "./pages/List";
 
 function App() {
+  const element = useRoutes([
+    {
+      path: "/",
+      element: <List />,
+    },
+  ]);
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>
@@ -21,6 +28,7 @@ function App() {
       </Header>
       <main style={{ padding: "0 100px" }}>
         <h1 style={{ textAlign: "center", margin: 10 }}>Bài Làm</h1>
+        {element}
       </main>
     </Layout>
   );

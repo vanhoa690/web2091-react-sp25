@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber, message } from "antd";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getOne, update } from "../../providers";
+import { update } from "../../providers";
 import { useOne } from "../../hooks";
 
 function ProductEdit() {

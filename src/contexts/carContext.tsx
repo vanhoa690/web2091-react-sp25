@@ -5,7 +5,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useList, useUpdate } from "../hooks";
 import { useUser } from "./userContext";
 import { getList, update } from "../providers";
 import { useMutation, useQuery } from "@tanstack/react-query";

@@ -1,9 +1,7 @@
-import { useMutation } from "@tanstack/react-query";
-import { Button, Form, Input, InputNumber, message } from "antd";
+import { Button, Form, Input, InputNumber } from "antd";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { update } from "../../providers";
-import { useOne } from "../../hooks";
+import { useParams } from "react-router-dom";
+import { useOne, useUpdate } from "../../hooks";
 
 function ProductEdit() {
   const { id } = useParams();
@@ -16,19 +14,7 @@ function ProductEdit() {
     form.setFieldsValue(product);
   }, [product]);
 
-  // onFinish = useMutation
-  const nav = useNavigate();
-
-  const { mutate } = useMutation({
-    mutationFn: (values: any) => update({ resource: "products", id, values }),
-    onSuccess: () => {
-      message.success("edit thanh cong");
-      nav("/product/list");
-    },
-    onError: () => {
-      message.error("loi roi, code cho han hoi vao");
-    },
-  });
+  const { mutate } = useUpdate({ resource: "products" });
 
   function onFinish(values: any) {
     mutate(values);

@@ -39,7 +39,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const [quantity, setQuantity] = useState(0);
 
   const { user } = useUser();
-  console.log(user);
 
   useEffect(() => {
     if (!user) setCart(null);

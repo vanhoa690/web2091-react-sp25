@@ -36,7 +36,7 @@ export const useCreate = ({ resource = "products" }) => {
     onSuccess: () => {
       message.success("them thanh cong");
       // chuyen sang trang list: /products
-      nav(`/${resource}`);
+      nav(`/admin/${resource}`);
     },
   });
 };
@@ -51,7 +51,7 @@ export const useUpdate = ({ resource = "products", id }: Props) => {
       message.success("update thanh cong");
       console.log({ data });
       // chuyen sang trang list: /products
-      nav(`/${resource}`);
+      nav(`/admin/${resource}`);
     },
   });
 };

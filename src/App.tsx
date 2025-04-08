@@ -4,6 +4,8 @@ import { Link, useRoutes } from "react-router-dom";
 import "antd/dist/reset.css";
 import List from "./pages/List";
 import Add from "./pages/Add";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   const element = useRoutes([
@@ -14,6 +16,14 @@ function App() {
     {
       path: "/add",
       element: <Add />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
     },
   ]);
   return (
@@ -28,6 +38,12 @@ function App() {
           </Menu.Item>
           <Menu.Item key="3">
             <Link to="/add">Add Product</Link>
+          </Menu.Item>
+          <Menu.Item key="4">
+            <Link to="/register">Register</Link>
+          </Menu.Item>
+          <Menu.Item key="5">
+            <Link to="/login">Login</Link>
           </Menu.Item>
         </Menu>
       </Header>

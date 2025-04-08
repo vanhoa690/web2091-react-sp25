@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function List() {
   const qc = useQueryClient();
+
   const { data: dataSource } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {

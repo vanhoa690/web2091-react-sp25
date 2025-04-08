@@ -4,7 +4,6 @@ import axios from "axios";
 
 export default function List() {
   const qc = useQueryClient();
-
   const { data: dataSource } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
@@ -12,15 +11,19 @@ export default function List() {
       return data;
     },
   });
+
   const { mutate } = useMutation({
     mutationFn: async (id) => {
-      if (confirm("Xoa?")) {
+      if (confirm("Xoas?")) {
         await axios.delete(`http://localhost:3000/products/${id}`);
-        message.success("Xoa thanh cong");
-        qc.invalidateQueries({ queryKey: ["products"] });
+        message.success("xoa ok");
+        qc.invalidateQueries({
+          queryKey: ["products"],
+        });
       }
     },
   });
+
   const columns = [
     { title: "ID", dataIndex: "id" },
     { title: "Name", dataIndex: "name" },
@@ -34,7 +37,7 @@ export default function List() {
     {
       title: "Actions",
       render: (product: any) => (
-        <Button danger onClick={() => mutate(product.id)}>
+        <Button onClick={() => mutate(product.id)} danger>
           Delete
         </Button>
       ),

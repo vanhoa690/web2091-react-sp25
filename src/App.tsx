@@ -3,12 +3,17 @@ import { Header } from "antd/es/layout/layout";
 import { Link, useRoutes } from "react-router-dom";
 import "antd/dist/reset.css";
 import List from "./pages/List";
+import Add from "./pages/Add";
 
 function App() {
   const element = useRoutes([
     {
       path: "/",
       element: <List />,
+    },
+    {
+      path: "/add",
+      element: <Add />,
     },
   ]);
   return (
@@ -22,7 +27,7 @@ function App() {
             <Link to="/">Products</Link>
           </Menu.Item>
           <Menu.Item key="3">
-            <Link to="/">Add Product</Link>
+            <Link to="/add">Add Product</Link>
           </Menu.Item>
         </Menu>
       </Header>

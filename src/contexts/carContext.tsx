@@ -3,23 +3,18 @@ import {
   ReactNode,
   useContext,
   useEffect,
-  useState,
+  useReducer,
 } from "react";
 import { useUser } from "./userContext";
-import { getList, update } from "../providers";
+import { create, getList, update } from "../providers";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { message } from "antd";
-
-type Cart = {
-  id: number;
-  quantity: string;
-  userId: number;
-};
+import { cartReducer, initialState } from "../reducers/cartReducer";
+import { Cart, CartState, Product } from "../types";
 
 type CartContextType = {
-  cart: Cart | null;
-  setCart: (cart: Cart | null) => void;
-  addToCart: () => void;
+  state: CartState;
+  addToCart: (product: Product) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -35,50 +30,51 @@ export const useCart = (): CartContextType => {
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<Cart | null>(null);
-  const [quantity, setQuantity] = useState(0);
-
+  const [state, dispatch] = useReducer(cartReducer, initialState);
   const { user } = useUser();
 
-  useEffect(() => {
-    if (!user) setCart(null);
-  }, [user]);
-
-  const { data } = useQuery({
+  const { data: userCart } = useQuery({
     queryKey: ["carts"],
     queryFn: () => getList({ resource: `carts?userId=${user?.id}` }),
     enabled: !!user?.id,
   });
 
-  const cartUser = data ? data[0] : null;
-
-  const cartId = cartUser?.id;
+  useEffect(() => {
+    if (user && userCart) {
+      dispatch({ type: "SET_CART", payload: userCart });
+    } else {
+      dispatch({ type: "CLEAR_CART" });
+    }
+  }, [user, userCart]);
 
   const { mutate } = useMutation({
     mutationFn: (values: any) =>
-      update({ resource: "carts", values, id: cartId }),
+      values.id
+        ? update({ resource: "carts", values: values.cart, id: values.id })
+        : create({ resource: "carts", values: values.cart }),
     onSuccess: (data) => {
-      message.success("add cart ok");
-      setCart(data);
-      setQuantity(data.quantity);
+      message.success("Them giỏ hàng thành công");
+      dispatch({ type: "ADD_TO_CART", payload: data });
     },
   });
 
-  useEffect(() => {
-    if (!cartUser) return;
-    setCart(cartUser);
-    setQuantity(cartUser.quantity);
-  }, [cartUser]);
+  const addToCart = (product: Product) => {
+    if (!user) return;
+    const existingCart = state.carts.find(
+      (item: Cart) => item.product.id === product.id
+    );
 
-  const addToCart = () => {
-    if (!cartId || !user) return;
     mutate({
-      userId: user.id,
-      quantity: quantity + 1,
+      id: existingCart?.id,
+      cart: {
+        userId: user.id,
+        product,
+        quantity: (existingCart?.quantity || 0) + 1,
+      },
     });
   };
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart }}>
+    <CartContext.Provider value={{ state, addToCart }}>
       {children}
     </CartContext.Provider>
   );

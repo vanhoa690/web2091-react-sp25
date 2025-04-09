@@ -18,7 +18,7 @@ function Homepage() {
             cover={<img alt={product.name} src={product.image} />}
           >
             <Meta title={product.name} description={product.price} />
-            <Button onClick={addToCart}>Add To Cart</Button>
+            <Button onClick={() => addToCart(product)}>Add To Cart</Button>
           </Card>
         </Col>
       ))}

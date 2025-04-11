@@ -2,70 +2,34 @@
   "products": [
     {
       "id": 1,
-      "name": "San pham A",
+      "name": "Sản phẩm A",
       "price": 32,
       "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      "desc": "mo ta"
+      "desc": "Mô tả sản phẩm A",
+      "category": "BMW",
+      "status": true
     },
     {
       "id": 2,
-      "name": "San pham A",
-      "price": 32,
+      "name": "Sản phẩm B",
+      "price": 45,
+      "image": "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg",
+      "desc": "Mô tả sản phẩm B",
+      "category": "Audi",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "Sản phẩm C",
+      "price": 28,
       "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      "desc": "mo ta"
+      "desc": "Mô tả sản phẩm C",
+      "category": "Vin",
+      "status": false
     }
   ],
   "categories": [],
-  "carts": [
-    {
-      "userId": 4,
-      "product": {
-        "id": 2,
-        "name": "San pham A",
-        "price": 32,
-        "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-        "desc": "mo ta"
-      },
-      "quantity": 14,
-      "id": 1
-    },
-    {
-      "userId": 4,
-      "product": {
-        "id": 1,
-        "name": "San pham A",
-        "price": 32,
-        "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-        "desc": "mo ta"
-      },
-      "quantity": 15,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "product": {
-        "id": 2,
-        "name": "San pham A",
-        "price": 32,
-        "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-        "desc": "mo ta"
-      },
-      "quantity": 6,
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "product": {
-        "id": 1,
-        "name": "San pham A",
-        "price": 32,
-        "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-        "desc": "mo ta"
-      },
-      "quantity": 8,
-      "id": 4
-    }
-  ],
+  "carts": [],
   "users": [
     {
       "email": "hoadv21@fpt.edu.vn",

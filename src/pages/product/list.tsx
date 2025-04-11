@@ -13,19 +13,19 @@ function ProductList() {
     category: "",
     status: "",
   });
+  const [orderBy, setOrderBy] = useState("desc");
 
   const { data, isLoading } = useQuery({
-    queryKey: ["products", searchText, filter],
+    queryKey: ["products", searchText, filter, orderBy],
     queryFn: async () => {
       const params = [];
 
-      if (searchText)
-        params.push(`name_like=${encodeURIComponent(searchText)}`);
-      if (filter.category)
-        params.push(`category=${encodeURIComponent(filter.category)}`);
+      if (searchText) params.push(`name_like=${searchText}`);
+      if (filter.category) params.push(`category=${filter.category}`);
 
-      if (filter.status)
-        params.push(`status=${encodeURIComponent(filter.status)}`);
+      if (filter.status) params.push(`status=${filter.status}`);
+
+      if (orderBy) params.push(`_sort=price&_order=${orderBy}`);
 
       const queryString = params.length > 0 ? `?${params.join("&")}` : "";
 
@@ -57,6 +57,16 @@ function ProductList() {
     {
       label: "Inactive",
       value: "false",
+    },
+  ];
+  const orderByOptions = [
+    {
+      label: "Tăng dần",
+      value: "asc",
+    },
+    {
+      label: "Giảm dần",
+      value: "desc",
     },
   ];
   const columns = [
@@ -118,7 +128,7 @@ function ProductList() {
             placeholder="Nhập tên sản phẩm"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            style={{ width: 300 }}
+            style={{ width: 100 }}
           />
           <Button
             type="primary"
@@ -131,15 +141,22 @@ function ProductList() {
             options={options}
             allowClear
             placeholder="Filter Category"
-            style={{ width: "200px" }}
+            style={{ width: 100 }}
             onChange={(category) => setFilter({ ...filter, category })}
           />
           <Select
             options={statusOptions}
             allowClear
             placeholder="Filter Status"
-            style={{ width: "200px" }}
+            style={{ width: 100 }}
             onChange={(status) => setFilter({ ...filter, status })}
+          />
+          <Select
+            options={orderByOptions}
+            allowClear
+            placeholder="Sort Price"
+            style={{ width: 100 }}
+            onChange={(orderBy) => setOrderBy(orderBy)}
           />
         </Space>
       </Space>

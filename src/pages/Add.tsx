@@ -5,7 +5,6 @@ import {
   DatePicker,
   Form,
   Input,
-  InputNumber,
   message,
   Select,
 } from "antd";
@@ -28,7 +27,7 @@ export default function Add() {
     mutate(values);
   };
   return (
-    <Form onFinish={onFinish}>
+    <Form onFinish={onFinish} initialValues={{ status: false }}>
       <Form.Item
         label="title"
         name="title"
@@ -51,27 +50,8 @@ export default function Add() {
       >
         <DatePicker />
       </Form.Item>
-      <Form.Item
-        label="status"
-        name="status"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Select
-          options={[
-            {
-              label: "Hoan thanh",
-              value: true,
-            },
-            {
-              label: "Chua hoan thanh",
-              value: false,
-            },
-          ]}
-        ></Select>
+      <Form.Item label="status" name="status" valuePropName="checked">
+        <Checkbox>Hoan thanh</Checkbox>
       </Form.Item>
       <Form.Item label="description" name="description">
         <TextArea></TextArea>

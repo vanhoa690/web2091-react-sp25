@@ -1,20 +1,35 @@
 {
-  "products": [
+  "todos": [
     {
-      "id": 1,
-      "name": "San pham A",
-      "price": 5000000,
-      "imageUrl": "https://thacoauto.vn/storage/bmw-z4.jpg",
-      "description": "BMW là thương hiệu xe hơi hạng sang của Đức, nổi tiếng với thiết kế sang trọng, hiệu suất mạnh mẽ và công nghệ tiên tiến. Xe BMW mang lại trải nghiệm lái thể thao, đẳng cấp và đầy cảm xúc.",
-      "category": "BMW"
+      "title": "Hoàn thành báo cáo tuần",
+      "dueDate": "2025-04-16T17:00:00.000Z",
+      "status": false,
+      "description": "Tổng hợp công việc đã làm trong tuần và gửi      cho quản lý.",
+      "priority": "Cao",
+      "id": 1
     },
     {
       "id": 2,
-      "name": "San pham B",
-      "price": 3200000,
-      "imageUrl": "https://hoangvietauto.vn/wp-content/uploads/xe-audi-q8.jpg",
-      "description": "Audi là thương hiệu xe sang của Đức, nổi bật với thiết kế hiện đại, công nghệ tiên tiến và hệ dẫn động quattro trứ danh. Xe Audi mang đến trải nghiệm lái êm ái, mạnh mẽ và đầy phong cách.",
-      "category": "Audi"
+      "title": "Họp nhóm dự án",
+      "description": "Thảo luận tiến độ và phân công công việc tiếp theo.",
+      "dueDate": "2025-04-15T09:00:00Z",
+      "priority": "Trung bình",
+      "status": true
+    },
+    {
+      "id": 3,
+      "title": "Ôn tập WEB2091",
+      "dueDate": "2025-04-18T18:30:00Z",
+      "priority": "Thấp",
+      "status": false
+    },
+    {
+      "description": "111",
+      "title": "1",
+      "dueDate": "2025-04-01T17:00:00.000Z",
+      "priority": "medium",
+      "status": true,
+      "id": 4
     }
   ],
   "users": []

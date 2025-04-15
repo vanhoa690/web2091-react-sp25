@@ -1,24 +1,32 @@
-import { useMutation } from "@tanstack/react-query";
-import {
-  Button,
-  Checkbox,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  message,
-  Select,
-} from "antd";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Button, DatePicker, Form, Input, message, Select } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import dayjs from "dayjs";
 
-export default function Add() {
+export default function Edit() {
   const nav = useNavigate();
+  const { id } = useParams();
+  const [form] = Form.useForm();
+
+  const { data: todo } = useQuery({
+    queryKey: ["todo"],
+    queryFn: async () => {
+      const { data } = await axios.get(`http://localhost:3000/todos/${id}`);
+      return data;
+    },
+  });
+
+  useEffect(() => {
+    if (!todo) return;
+    form.setFieldsValue({ ...todo, dueDate: dayjs(todo.dueDate) });
+  }, [todo]);
 
   const { mutate } = useMutation({
     mutationFn: async (values) => {
-      await axios.post("http://localhost:3000/todos", values);
+      await axios.put(`http://localhost:3000/todos/${id}`, values);
       message.success("them thanh cong");
       nav("/");
     },
@@ -28,7 +36,7 @@ export default function Add() {
     mutate(values);
   };
   return (
-    <Form onFinish={onFinish}>
+    <Form form={form} onFinish={onFinish}>
       <Form.Item
         label="title"
         name="title"
@@ -46,6 +54,14 @@ export default function Add() {
         rules={[
           {
             required: true,
+          },
+          {
+            validator: (_, value) => {
+              if (value.isBefore(dayjs(), "day")) {
+                return Promise.reject("Khong cho chon ngay trong qua khu");
+              }
+              return Promise.resolve();
+            },
           },
         ]}
       >

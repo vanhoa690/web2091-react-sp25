@@ -6,6 +6,7 @@ import List from "./pages/List";
 import Add from "./pages/Add";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Edit from "./pages/Edit";
 
 function App() {
   const element = useRoutes([
@@ -16,6 +17,10 @@ function App() {
     {
       path: "/add",
       element: <Add />,
+    },
+    {
+      path: "/edit/:id",
+      element: <Edit />,
     },
     {
       path: "/register",
